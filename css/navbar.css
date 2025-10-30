@@ -1,0 +1,84 @@
+/* navbar.css */
+
+.site-header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #eee;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .8rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand .brand-text { font-weight: 700; font-size: 1.05rem; }
+
+.logo { width: 40px; height: 40px; display: block; }
+
+.primary-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+}
+
+.primary-nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: .5rem .6rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.primary-nav a:hover,
+.primary-nav a:focus {
+  background: rgba(76,175,80,0.08);
+  color: var(--brand-green);
+}
+
+.nav-toggle {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .35rem;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 28px;
+  height: 2px;
+  background: var(--text);
+  position: relative;
+  display: block;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--text);
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }

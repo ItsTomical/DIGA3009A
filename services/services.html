@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Trusty Paws — Services & Pricing</title>
+    <meta
+      name="description"
+      content="Trusty Paws pet sitting services, pricing, and coverage map."
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="../css/services.css" />
+
+    <!-- GSAP for scroll/hover animation -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+
+    <!-- Page Script -->
+    <script src="../javascript/services.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="index.html">
+          <img src="images/logo.svg" alt="Trusty Paws logo" class="logo" />
+          <span class="brand-text">Trusty Paws</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Open menu"
+        >
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="primary-nav"
+          role="navigation"
+          aria-label="Primary navigation"
+        >
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="faq.html">FAQ/Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-intro">
+        <div class="container">
+          <h1>Services & Pricing Page</h1>
+        </div>
+      </section>
+
+      <section class="services">
+        <div class="container">
+          <h2>Services & Pricing</h2>
+
+          <div class="service-list">
+            <article class="service-card" tabindex="0">
+              <div class="icon">🏠</div>
+              <div class="content">
+                <h3>Daily Visits</h3>
+                <p>
+                  Quick check-ins to feed, water, give attention, and let your
+                  pet out for a bathroom break.
+                </p>
+                <p>
+                  <strong>Price range:</strong> R120 – R180 per visit (depending
+                  on pet needs).<br />
+                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
+                  km radius.
+                </p>
+              </div>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <div class="icon">🐾</div>
+              <div class="content">
+                <h3>Dog Walking</h3>
+                <p>
+                  A dedicated walk to keep your dog active, happy, and
+                  socialised. Walks are tailored to your dog’s energy level and
+                  needs.
+                </p>
+                <p>
+                  <strong>Price range:</strong> R150 – R250 per walk (30–60
+                  minutes).<br />
+                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
+                  km radius.
+                </p>
+              </div>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <div class="icon">🛏️</div>
+              <div class="content">
+                <h3>Overnight Stays</h3>
+                <p>
+                  Overnight care in your home including feeding, walks,
+                  playtime, and supervision to keep your pet comfortable.
+                </p>
+                <p>
+                  <strong>Price range:</strong> R500 – R700 per night.<br />
+                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
+                  km radius.
+                </p>
+              </div>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <div class="icon">⏱️</div>
+              <div class="content">
+                <h3>Hourly Visits</h3>
+                <p>
+                  Flexible care at home for however long your pet needs —
+                  feeding, playtime, potty breaks, and companionship.
+                </p>
+                <p>
+                  <strong>Price range:</strong> R100 – R150 per hour.<br />
+                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
+                  km radius.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="coverage-map">
+        <div class="container">
+          <h2>Coverage Map</h2>
+          <form class="coverage-form" onsubmit="return false;">
+            <label for="suburb">Enter your suburb</label>
+            <div class="input-group">
+              <input id="suburb" type="text" placeholder="e.g. Sandton" />
+              <button
+                type="button"
+                id="check-suburb"
+                aria-label="Check coverage"
+              >
+                &rarr;
+              </button>
+            </div>
+          </form>
+
+          <div id="map-placeholder" class="map-placeholder" aria-hidden="true">
+            <p>Map loading...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>&copy; <span id="year"></span> Trusty Paws. All rights reserved.</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="faq.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

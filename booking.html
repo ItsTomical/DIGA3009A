@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Booking Page</title>
+    <link rel="stylesheet" href="css/booking.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <!-- Flatpickr for modern date selection -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  </head>
+  <body>
+    <header class="top-header">
+      <div class="top-inner">
+        <div class="logo-left">🏠🐾</div>
+        <h1 class="page-title">Booking Page</h1>
+        <div class="spacer"></div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Progress / Step indicator -->
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-label" id="progressLabel">Step 1 of 3</div>
+      </div>
+
+      <!-- Step 1 -->
+      <section
+        class="form-step active"
+        id="step1"
+        aria-labelledby="bookingHeading"
+      >
+        <h2 id="bookingHeading" class="centered-title">Booking</h2>
+
+        <!-- Service selection card -->
+        <div class="card service-card">
+          <h3 class="card-title">Service Selection</h3>
+          <div
+            class="service-grid"
+            role="radiogroup"
+            aria-label="Service selection"
+          >
+            <label class="service-option"
+              ><input type="radio" name="service" value="Daily Visit" />
+              <span>Daily Visit</span></label
+            >
+            <label class="service-option"
+              ><input type="radio" name="service" value="Overnight Stay" />
+              <span>Overnight Stay</span></label
+            >
+            <label class="service-option"
+              ><input type="radio" name="service" value="Dog Walking" />
+              <span>Dog Walking</span></label
+            >
+            <label class="service-option"
+              ><input type="radio" name="service" value="Hourly Visit" />
+              <span>Hourly Visit</span></label
+            >
+          </div>
+        </div>
+
+        <!-- Booking form -->
+        <div class="card form-card">
+          <h3 class="card-title">Booking Form</h3>
+          <form id="bookingForm" novalidate>
+            <div class="two-col">
+              <div class="field">
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Full name"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="two-col">
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Phone"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="date">Date</label>
+                <input id="date" name="date" type="date" />
+              </div>
+            </div>
+
+            <!-- Pet Details (Wag-style) -->
+            <div class="field pet-field">
+              <label>Pet Details</label>
+
+              <!-- Clickable “select” -->
+              <div id="petDropdownTrigger" class="pet-select-input">
+                <span id="petSummaryText">Select pets</span>
+                <span class="arrow">▼</span>
+              </div>
+
+              <!-- Dropdown panel -->
+              <div id="petDropdown" class="pet-dropdown hidden">
+                <div class="pet-row" data-type="Dog">
+                  <span class="pet-label">🐶 Dogs</span>
+                  <div class="counter">
+                    <button type="button" class="circle-btn minus">−</button>
+                    <span class="count">0</span>
+                    <button type="button" class="circle-btn plus">+</button>
+                  </div>
+                </div>
+
+                <div class="pet-row" data-type="Cat">
+                  <span class="pet-label">🐱 Cats</span>
+                  <div class="counter">
+                    <button type="button" class="circle-btn minus">−</button>
+                    <span class="count">0</span>
+                    <button type="button" class="circle-btn plus">+</button>
+                  </div>
+                </div>
+
+                <div class="pet-row" data-type="Other">
+                  <span class="pet-label">🐾 Other</span>
+                  <div class="counter">
+                    <button type="button" class="circle-btn minus">−</button>
+                    <span class="count">0</span>
+                    <button type="button" class="circle-btn plus">+</button>
+                  </div>
+                </div>
+
+                <div id="otherPetField" class="hidden">
+                  <input
+                    type="text"
+                    id="otherPet"
+                    placeholder="What kind of animal?"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col">
+              <div class="field">
+                <label for="special">Special Instructions</label>
+                <textarea
+                  id="special"
+                  name="special"
+                  rows="3"
+                  placeholder="Feeding, meds, etc."
+                ></textarea>
+              </div>
+              <div class="field">
+                <label for="notes">Additional Notes</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="Any other notes"
+                ></textarea>
+              </div>
+            </div>
+          </form>
+
+          <div class="actions">
+            <button id="continueBtn" type="button" class="btn primary" disabled>
+              Continue
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 2 -->
+      <section class="form-step" id="step2">
+        <h2 class="centered-title">First-Timer Checklist</h2>
+        <p class="step-label">Step 2 of 3</p>
+
+        <div class="card checklist">
+          <details open>
+            <summary>General Pet Care Info</summary>
+            <textarea
+              id="careInfo"
+              rows="3"
+              placeholder="Feeding routine, daily schedule, etc."
+            ></textarea>
+          </details>
+
+          <details>
+            <summary>Pet Behaviour & Socialisation</summary>
+            <textarea
+              id="behaviour"
+              rows="3"
+              placeholder="Temperament, social habits, training notes..."
+            ></textarea>
+          </details>
+
+          <details>
+            <summary>Daily Visits / Dog Walking Notes</summary>
+            <textarea
+              id="dailyNotes"
+              rows="3"
+              placeholder="Preferred routes, duration, leash details..."
+            ></textarea>
+          </details>
+
+          <details>
+            <summary>Overnight / Housesitting Specifics</summary>
+            <div class="checkbox-row">
+              <label
+                ><input id="security" type="checkbox" /> Security info</label
+              >
+              <label><input id="alarms" type="checkbox" /> Alarms</label>
+            </div>
+            <input
+              id="feeding"
+              type="text"
+              placeholder="Feeding instructions"
+            />
+            <input id="tasks" type="text" placeholder="Tasks or chores" />
+            <label class="upload-box">
+              <input id="petPhoto" type="file" accept="image/*" />
+              <div class="upload-text">📸 Upload pet photo</div>
+            </label>
+          </details>
+        </div>
+
+        <div class="actions multi">
+          <button class="btn secondary prevBtn">Back</button>
+          <button class="btn primary nextBtn">Next</button>
+        </div>
+      </section>
+
+      <!-- Step 3 – Review & Confirm -->
+      <div class="form-step" id="step3">
+        <h2>Step 3 / 3 – Review & Confirm</h2>
+
+        <div class="summary-section">
+          <h3>Booking Summary</h3>
+          <div id="summaryBox" class="summary-box"></div>
+        </div>
+
+        <div class="pricing-section">
+          <h3>Pricing Details</h3>
+          <div id="pricingInfo" class="pricing-info"></div>
+        </div>
+
+        <div class="button-group">
+          <button type="button" class="btn secondary prevBtn">Back</button>
+          <button type="button" id="submitBtn" class="btn primary">
+            Confirm Booking
+          </button>
+        </div>
+      </div>
+
+      <!-- Booking Confirmed Screen -->
+      <div id="bookingConfirmed" style="display: none">
+        <div class="success-screen">
+          <h2>🎉 Booking Confirmed!</h2>
+          <p>
+            Thank you for your booking. A confirmation email has been sent to
+            you.
+          </p>
+          <button type="button" id="newBookingBtn" class="btn primary">
+            Book Another
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="javascript/booking.js"></script>
+  </body>
+</html>

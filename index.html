@@ -1,11 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Trusty Paws — Trusted Pet Sitting</title>
+    <meta
+      name="description"
+      content="Trusty Paws — reliable dog walking, daily visits and overnight pet sitting in Johannesburg."
+    />
+
+    <!-- Fonts (visual resource but not inline CSS) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+
+    <!-- GSAP (animations) -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+
+    <!-- Main JS -->
+    <script src="script.js" defer></script>
   </head>
   <body>
-    Hello World
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="#" aria-label="Trusty Paws homepage">
+          <img class="logo" src="logo.svg" alt="Trusty Paws logo" />
+          <span class="brand-text">Trusty Paws</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Open menu"
+        >
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="primary-nav"
+          role="navigation"
+          aria-label="Primary navigation"
+        >
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-label="Intro">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1>Trusted Sitting for Every Pet</h1>
+            <p class="lead">
+              More than care — it’s <strong>Trusty Paws</strong>. Reliable dog
+              walking, drop-ins, and overnight stays so you can travel or work
+              with peace of mind.
+            </p>
+            <div class="hero-ctas">
+              <a class="btn primary" href="booking.html">Book Now</a>
+              <a class="btn ghost" href="#services">View Services</a>
+            </div>
+          </div>
+
+          <div class="hero-media" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1558788353-f76d92427f16?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=7c8d3fb3a8e9a67b9f6b7b2f1d2b5f09"
+              alt="Happy Labrador playing outdoors"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services">
+        <div class="container">
+          <h2>Services & Pricing</h2>
+
+          <div class="service-list">
+            <article class="service-card" tabindex="0">
+              <div class="icon">🏠</div>
+              <div class="content">
+                <h3>Daily Visits</h3>
+                <p>
+                  Quick check-ins to feed, water, give attention, and let your
+                  pet out for a bathroom break.
+                </p>
+                <p>
+                  <strong>Price range:</strong> R120 – R180 per visit (depending
+                  on pet needs).<br />
+                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
+                  km radius.
+                </p>
+              </div>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <div class="icon">🐾</div>
+              <div class="content">
+                <h3>Dog Walking</h3>
+                <p>
+                  A dedicated walk to keep your dog active, happy, and
+                  socialised. Walks are tailored to your dog’s energy level and
+                  needs.
+                </p>
+                <p>
+                  <strong>Price range:</strong> R150 – R250 per walk (30–60
+                  minutes).<br />
+                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
+                  km radius.
+                </p>
+              </div>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <div class="icon">🛏️</div>
+              <div class="content">
+                <h3>Overnight Stays</h3>
+                <p>
+                  Overnight care in your home including feeding, walks,
+                  playtime, and supervision to keep your pet comfortable.
+                </p>
+                <p>
+                  <strong>Price range:</strong> R500 – R700 per night.<br />
+                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
+                  km radius.
+                </p>
+              </div>
+            </article>
+
+            <article class="service-card" tabindex="0">
+              <div class="icon">⏱️</div>
+              <div class="content">
+                <h3>Hourly Visits</h3>
+                <p>
+                  Flexible care at home for however long your pet needs —
+                  feeding, playtime, potty breaks, and companionship.
+                </p>
+                <p>
+                  <strong>Price range:</strong> R100 – R150 per hour.<br />
+                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
+                  km radius.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="how-works">
+        <div class="container">
+          <h2>How it works</h2>
+          <p class="sub">
+            Simple steps to book and feel confident your pet is in great hands.
+          </p>
+
+          <ol class="steps" aria-label="How it works steps">
+            <li>
+              <div class="step-number">1</div>
+              <h3>Pick Your Service</h3>
+              <p>Choose Dog Walking, Drop-In Visits, or an Overnight Stay.</p>
+            </li>
+            <li>
+              <div class="step-number">2</div>
+              <h3>Share Pet Details</h3>
+              <p>
+                Complete a quick checklist: feeding, meds, favourite toys and
+                behaviour notes.
+              </p>
+            </li>
+            <li>
+              <div class="step-number">3</div>
+              <h3>Confirm Booking</h3>
+              <p>
+                Request a booking — we’ll confirm availability and next steps.
+              </p>
+            </li>
+            <li>
+              <div class="step-number">4</div>
+              <h3>Stay Updated</h3>
+              <p>Receive updates, photos and notes during each visit.</p>
+            </li>
+            <li>
+              <div class="step-number">5</div>
+              <h3>Review & Rebook</h3>
+              <p>
+                Happy with the care? Share your feedback and easily rebook for
+                next time.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="coverage-map">
+        <div class="container">
+          <h2>Coverage Map</h2>
+          <form class="coverage-form" onsubmit="return false;">
+            <label for="suburb">Enter your suburb</label>
+            <div class="input-group">
+              <input id="suburb" type="text" placeholder="e.g. Sandton" />
+              <button
+                type="button"
+                id="check-suburb"
+                aria-label="Check coverage"
+              >
+                &rarr;
+              </button>
+            </div>
+          </form>
+
+          <div id="map-placeholder" class="map-placeholder" aria-hidden="true">
+            <p>Map loading...</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" class="reviews">
+        <div class="container">
+          <h2>What clients say</h2>
+          <div class="reviews-wrap">
+            <button class="carousel-btn prev" aria-label="Previous review">
+              &larr;
+            </button>
+            <ul class="reviews-list" id="reviews-list" role="list">
+              <!-- JS will insert reviews here -->
+            </ul>
+            <button class="carousel-btn next" aria-label="Next review">
+              &rarr;
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="pet-facts">
+        <div class="container">
+          <h2>Pet facts</h2>
+          <p id="pet-fact" class="pet-fact-text">
+            Did you know? A dog’s nose print is unique — like a human
+            fingerprint.
+          </p>
+          <div class="fact-controls">
+            <button id="new-fact" class="btn small">New fact</button>
+            <small class="hint"
+              >Fact source placeholder — can be connected to a pet-facts API
+              later.</small
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="faq-contact">
+        <div class="container faq-contact-inner">
+          <div class="faq-box">
+            <h3>Frequently Asked Questions</h3>
+            <div class="faq-item">
+              <button class="faq-question">
+                + What is your cancellation policy?
+              </button>
+              <div class="faq-answer">
+                <p>
+                  We request 24 hours' notice for cancellations. Last-minute
+                  cancellations may incur a fee.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">+ Do you accept exotic pets?</button>
+              <div class="faq-answer">
+                <p>
+                  Please contact us — depending on species and care needs, we
+                  may be able to help or refer you to a specialist.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">+ How do I make a booking?</button>
+              <div class="faq-answer">
+                <p>
+                  You can fill out our online booking form or reach us directly
+                  by phone or email.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">+ What areas do you cover?</button>
+              <div class="faq-answer">
+                <p>
+                  We currently serve most suburbs in northern Johannesburg.
+                  Check our coverage map to confirm your area.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <h3>Contact</h3>
+            <form class="contact-form" novalidate>
+              <input type="text" name="name" placeholder="Name" required />
+              <input type="email" name="email" placeholder="Email" required />
+              <textarea
+                name="message"
+                placeholder="Message"
+                rows="4"
+                required
+              ></textarea>
+              <button type="submit" class="btn-send">Send</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="contact-icons">
+          <div><span>📞</span> Phone Number</div>
+          <div><span>🌐</span> Social Links</div>
+          <div><span>✉️</span> Email</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>&copy; <span id="year"></span> Trusty Paws. All rights reserved.</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#booking">Booking</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
   </body>
 </html>

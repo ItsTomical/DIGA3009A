@@ -1,0 +1,204 @@
+/* Services & Pricing Page — style.css */
+:root{
+  --brand-green: #4CAF50;
+  --brand-blue: #1976D2;
+  --accent: #FF5722;
+  --text: #333;
+  --muted: #666;
+  --bg: #fff;
+  --shadow: 0 6px 18px rgba(0,0,0,0.08);
+  --radius: 12px;
+  --max-width: 1100px;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family: "Lora", serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:"Poppins",sans-serif;}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 1rem;}
+
+/* Header / Nav */
+.site-header{
+  background:#fff;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:.75rem 0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  text-decoration:none;
+  color:var(--text);
+}
+.logo{width:40px;height:40px;}
+.brand-text{font-weight:700;}
+.primary-nav ul{list-style:none;display:flex;gap:.8rem;}
+.primary-nav a{
+  text-decoration:none;
+  color:var(--text);
+  padding:.4rem .6rem;
+  border-radius:8px;
+  font-weight:600;
+  transition:all .25s ease;
+}
+.primary-nav a:hover,
+.primary-nav a:focus,
+.primary-nav a.active{
+  background:rgba(25,118,210,0.08);
+  color:var(--brand-green);
+}
+
+/* Hamburger for mobile */
+.nav-toggle{
+  background:none;
+  border:none;
+  cursor:pointer;
+  display:none;
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after{
+  content:"";
+  display:block;
+  width:24px;
+  height:2px;
+  background:var(--text);
+  transition:all .3s ease;
+}
+.hamburger::before{transform:translateY(-6px);}
+.hamburger::after{transform:translateY(4px);}
+
+/* Page Intro */
+.page-intro{
+  text-align:center;
+  padding:2rem 0 1rem;
+}
+.page-intro h1{font-size:1.8rem;}
+
+/* Services */
+.services{
+  padding:1rem 0 2rem;
+}
+.services h2{
+  text-align:center;
+  margin-bottom:1.2rem;
+  font-size:1.4rem;
+}
+.service-list{
+  display:grid;
+  gap:1rem;
+}
+.service-card{
+  display:flex;
+  gap:1rem;
+  align-items:flex-start;
+  background:#fff;
+  border:1.5px solid #e3e3e3;
+  border-radius:var(--radius);
+  padding:1rem;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease, border .25s ease;
+}
+.service-card:hover,
+.service-card:focus{
+  transform:translateY(-4px);
+  border-color:var(--brand-green);
+  box-shadow:0 8px 22px rgba(76,175,80,0.25);
+}
+.service-card .icon{
+  font-size:2rem;
+  flex-shrink:0;
+}
+.service-card h3{
+  color:var(--brand-blue);
+  margin-bottom:.3rem;
+}
+.service-card p{margin-bottom:.4rem;color:var(--muted);}
+.service-card strong{color:var(--text);}
+
+/* Coverage Map */
+.coverage-map{
+  padding:2rem 0;
+  background:#f9f9f9;
+  text-align:center;
+}
+.coverage-map h2{margin-bottom:1rem;}
+.coverage-form{
+  margin-bottom:1rem;
+  display:inline-block;
+}
+.coverage-form label{
+  display:none;
+}
+.input-group{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.input-group input{
+  padding:.6rem .8rem;
+  border:1.5px solid #ccc;
+  border-radius:8px 0 0 8px;
+  outline:none;
+  font-size:1rem;
+}
+.input-group button{
+  padding:.6rem 1rem;
+  background:var(--brand-green);
+  border:none;
+  color:#fff;
+  border-radius:0 8px 8px 0;
+  cursor:pointer;
+  font-size:1.2rem;
+  transition:background .25s ease;
+}
+.input-group button:hover{background:var(--brand-blue);}
+.map-placeholder{
+  background:linear-gradient(135deg,#d9e8ff,#b0cffa);
+  border-radius:var(--radius);
+  padding:3rem 0;
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.map-placeholder p{margin:0;font-weight:600;}
+
+/* Footer */
+.site-footer{
+  background:#fff;
+  border-top:1px solid #eee;
+  padding:1rem 0;
+}
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.footer-nav ul{list-style:none;display:flex;gap:.8rem;}
+.footer-nav a{
+  text-decoration:none;
+  color:var(--brand-blue);
+  font-weight:600;
+}
+
+/* Responsive */
+@media(min-width:720px){
+  .service-list{grid-template-columns:1fr 1fr;}
+}
+@media(min-width:1000px){
+  .service-list{grid-template-columns:1fr 1fr;}
+}
