@@ -14,10 +14,14 @@
       href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" href="images/favicon2.png" />
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/paw_trail.css" />
+    <link rel="stylesheet" href="css/stickers.css" />
+    <link rel="stylesheet" href="css/background.css" />
 
     <!-- GSAP (animations) -->
     <script
@@ -30,18 +34,24 @@
     ></script>
 
     <!-- Main JS -->
-    <script src="script.js" defer></script>
+    <script src="javascript/navbar.js"></script>
+    <script src="javascript/script.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to main content</a>
-
+    <!-- Floating stickers background -->
+    <div
+      class="background-stickers"
+      id="backgroundStickers"
+      aria-hidden="true"
+    ></div>
     <header class="site-header" role="banner">
       <div class="container header-inner">
         <a class="brand" href="#" aria-label="Trusty Paws homepage">
-          <img class="logo" src="logo.svg" alt="Trusty Paws logo" />
+          <img class="logo" src="images/logo_icon.png" alt="Trusty Paws logo" />
           <span class="brand-text">Trusty Paws</span>
         </a>
 
+        <!-- Mobile button -->
         <button
           class="nav-toggle"
           aria-expanded="false"
@@ -51,6 +61,7 @@
           <span class="hamburger" aria-hidden="true"></span>
         </button>
 
+        <!-- Navigation -->
         <nav
           id="primary-nav"
           class="primary-nav"
@@ -61,8 +72,10 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#how">How it works</a></li>
             <li><a href="#reviews">Reviews</a></li>
-            <li><a href="booking.html">Booking</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li>
+              <a href="booking.html" class="cta no-scroll">Book Now 🐾</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -72,15 +85,19 @@
       <section class="hero" aria-label="Intro">
         <div class="container hero-inner">
           <div class="hero-copy">
-            <h1>Trusted Sitting for Every Pet</h1>
+            <h1>
+              Trusted Sitting <br />
+              for Every Pet
+            </h1>
             <p class="lead">
               More than care — it’s <strong>Trusty Paws</strong>. Reliable dog
-              walking, drop-ins, and overnight stays so you can travel or work
-              with peace of mind.
+              walking,<br />
+              drop-ins, and overnight stays so you can travel or work with
+              <br />
+              peace of mind.
             </p>
             <div class="hero-ctas">
               <a class="btn primary" href="booking.html">Book Now</a>
-              <a class="btn ghost" href="#services">View Services</a>
             </div>
           </div>
 
@@ -99,7 +116,9 @@
 
           <div class="service-list">
             <article class="service-card" tabindex="0">
-              <div class="icon">🏠</div>
+              <div class="icon">
+                <img src="images/house_icon.png" alt="Daily visits icon" />
+              </div>
               <div class="content">
                 <h3>Daily Visits</h3>
                 <p>
@@ -116,7 +135,12 @@
             </article>
 
             <article class="service-card" tabindex="0">
-              <div class="icon">🐾</div>
+              <div class="icon">
+                <img
+                  src="images/man_with_dog_icon.png"
+                  alt="Dog walking icon"
+                />
+              </div>
               <div class="content">
                 <h3>Dog Walking</h3>
                 <p>
@@ -134,7 +158,9 @@
             </article>
 
             <article class="service-card" tabindex="0">
-              <div class="icon">🛏️</div>
+              <div class="icon">
+                <img src="images/bed_icon.png" alt="Overnight stays icon" />
+              </div>
               <div class="content">
                 <h3>Overnight Stays</h3>
                 <p>
@@ -150,7 +176,9 @@
             </article>
 
             <article class="service-card" tabindex="0">
-              <div class="icon">⏱️</div>
+              <div class="icon">
+                <img src="images/timer_icon.png" alt="Hourly visits icon" />
+              </div>
               <div class="content">
                 <h3>Hourly Visits</h3>
                 <p>
@@ -317,23 +345,33 @@
           <div class="contact-box">
             <h3>Contact</h3>
             <form class="contact-form" novalidate>
-              <input type="text" name="name" placeholder="Name" required />
-              <input type="email" name="email" placeholder="Email" required />
-              <textarea
-                name="message"
-                placeholder="Message"
-                rows="4"
-                required
-              ></textarea>
+              <label>Name <span class="req">*</span></label>
+              <input type="text" name="name" required />
+
+              <label>Email <span class="req">*</span></label>
+              <input type="email" name="email" required />
+
+              <label>Message <span class="req">*</span></label>
+              <textarea name="message" rows="4" required></textarea>
+
               <button type="submit" class="btn-send">Send</button>
             </form>
           </div>
         </div>
 
         <div class="contact-icons">
-          <div><span>📞</span> Phone Number</div>
-          <div><span>🌐</span> Social Links</div>
-          <div><span>✉️</span> Email</div>
+          <div>
+            <img src="images/phone_icon.png" alt="Phone icon" /> Contact Number
+            - 082 928 4846
+          </div>
+          <div>
+            <img src="images/internet_icon.png" alt="Website icon" /> Social
+            Links -
+          </div>
+          <div>
+            <img src="images/email_icon.png" alt="Email icon" /> Email -
+            thomas.m.yardley@gmail.com
+          </div>
         </div>
       </section>
     </main>
@@ -350,5 +388,8 @@
         </nav>
       </div>
     </footer>
+
+    <script src="javascript/paw_trail.js"></script>
+    <script src="javascript/background.js"></script>
   </body>
 </html>

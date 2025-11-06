@@ -13,28 +13,28 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // NAV TOGGLE (adds/removes class only)
-  const navToggle = document.querySelector('.nav-toggle');
-  const primaryNav = document.getElementById('primary-nav');
+  // const navToggle = document.querySelector('.nav-toggle');
+  // const primaryNav = document.getElementById('primary-nav');
 
-  if (navToggle && primaryNav) {
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      navToggle.setAttribute('aria-label', expanded ? 'Open menu' : 'Close menu');
-      primaryNav.classList.toggle('open');
-    });
+  // if (navToggle && primaryNav) {
+  //   navToggle.addEventListener('click', () => {
+  //     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  //     navToggle.setAttribute('aria-expanded', String(!expanded));
+  //     navToggle.setAttribute('aria-label', expanded ? 'Open menu' : 'Close menu');
+  //     primaryNav.classList.toggle('open');
+  //   });
 
-    // Close mobile nav when a link is clicked
-    primaryNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        if (primaryNav.classList.contains('open')) {
-          primaryNav.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.setAttribute('aria-label', 'Open menu');
-        }
-      });
-    });
-  }
+  //   // Close mobile nav when a link is clicked
+  //   primaryNav.querySelectorAll('a').forEach(a => {
+  //     a.addEventListener('click', () => {
+  //       if (primaryNav.classList.contains('open')) {
+  //         primaryNav.classList.remove('open');
+  //         navToggle.setAttribute('aria-expanded', 'false');
+  //         navToggle.setAttribute('aria-label', 'Open menu');
+  //       }
+  //     });
+  //   });
+  // }
 
   /* -----------------------
      Reviews carousel (simple)
@@ -170,3 +170,11 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
 
 });
+
+
+
+
+
+
+
+

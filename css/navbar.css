@@ -1,84 +1,180 @@
-/* navbar.css */
+/* Fun & Lively Navbar */
 
+/* Header */
 .site-header {
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
   position: sticky;
   top: 0;
-  z-index: 50;
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid #eee;
+  z-index: 100;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(14px) saturate(180%);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  
+}
+
+@keyframes fadeDown {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(-10px); }
 }
 
 .header-inner {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: .8rem 0;
+  justify-content: space-between;
+  padding: .9rem 0;
 }
 
+/* Brand */
 .brand {
   display: flex;
   align-items: center;
-  gap: .5rem;
-  text-decoration: none;
   color: var(--text);
+  font-weight: 700;
+  gap: .4rem;
+  text-decoration: none;
 }
 
-.brand .brand-text { font-weight: 700; font-size: 1.05rem; }
+.logo {
+  width: 65px;
+  height: auto;
+}
 
-.logo { width: 40px; height: 40px; display: block; }
-
+/* Nav layout */
 .primary-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: .75rem;
-  align-items: center;
 }
 
 .primary-nav a {
+  position: relative;
+  font-weight: 600;
   text-decoration: none;
   color: var(--text);
-  padding: .5rem .6rem;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: .5rem .7rem;
+  border-radius: 10px;
+  transition: .28s cubic-bezier(.175,.885,.32,1.275);
+  cursor: url('paw-cursor.png'), pointer;
 }
 
-.primary-nav a:hover,
-.primary-nav a:focus {
-  background: rgba(76,175,80,0.08);
+/* Bounce hover */
+.primary-nav a:hover {
+  transform: translateY(-3px);
+  background: rgba(255,165,0,0.15);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.07);
   color: var(--brand-green);
 }
 
+/* Underline reveal */
+.primary-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: .28s ease;
+  transform: translateX(-50%);
+}
+
+.primary-nav a:hover::after {
+  width: 55%;
+}
+
+/* Active link (scroll-spy) */
+.primary-nav a.active {
+  color: var(--brand-green);
+}
+
+.primary-nav a.active::after {
+  width: 55%;
+}
+
+
+/* CTA button */
+.primary-nav .cta {
+  background: var(--brand-green);
+  color: white;
+  border-radius: 12px;
+  padding: .55rem 1rem;
+  font-weight: 700;
+}
+
+.primary-nav .cta:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* Hamburger */
 .nav-toggle {
-  margin-left: auto;
+  display: none;
   background: none;
   border: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: .35rem;
+  padding: .4rem;
   cursor: pointer;
 }
 
 .hamburger {
   width: 28px;
-  height: 2px;
+  height: 3px;
   background: var(--text);
   position: relative;
-  display: block;
+  transition: .3s ease;
 }
 
 .hamburger::before,
 .hamburger::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
+  width: 28px;
+  height: 3px;
   background: var(--text);
+  transition: .3s ease;
 }
 
 .hamburger::before { top: -8px; }
 .hamburger::after { bottom: -8px; }
+
+/* Hamburger active → X */
+.nav-toggle.active .hamburger {
+  background: transparent;
+}
+
+.nav-toggle.active .hamburger::before {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav-toggle.active .hamburger::after {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile nav */
+@media (max-width: 780px) {
+  .nav-toggle { display: block; }
+  .primary-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: none;
+    animation: slideDown .35s cubic-bezier(.22,.61,.36,1);
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .primary-nav.open { display: block; }
+
+  .primary-nav ul {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+}

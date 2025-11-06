@@ -1,0 +1,22 @@
+.paw-print {
+  width: 32px;
+  height: 32px;
+  background: url("../images/paw_print.png") center/contain no-repeat;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2147483647 !important; /* highest possible */
+  animation: fadePaw 1.2s ease-out forwards;
+}
+
+/* fade + shrink */
+@keyframes fadePaw {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}

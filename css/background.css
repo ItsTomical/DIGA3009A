@@ -1,0 +1,65 @@
+:root {
+  --sticker-min: 56px;
+  --sticker-max: 120px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-image: url("../images/background/grey-pattern.png");
+  background-repeat: repeat;
+  background-size: auto;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Floating Sticker Layer */
+.background-stickers {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.sticker {
+  position: absolute;
+  will-change: transform, opacity;
+  opacity: 0.95;
+}
+
+.sticker img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Float animations */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(-18px) rotate(6deg) scale(1.02); }
+}
+
+@keyframes floatYReverse {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(18px) rotate(-6deg) scale(0.99); }
+}
+
+/* Responsive size tweaks */
+@media (max-width: 768px) {
+  :root {
+    --sticker-min: 42px;
+    --sticker-max: 72px;
+  }
+}
+
+/* Disable animation for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .sticker { animation: none !important; }
+}

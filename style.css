@@ -1,8 +1,7 @@
 /* -------------------------
-   Trusty Paws — style.css
-   (All visual rules live here)
-   Mobile-first responsive
+   Trusty Paws — homepage css
    ------------------------- */
+
 
 /* Brand variables */
 
@@ -23,6 +22,23 @@ html {
   --shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
+/* Section spacing + divider line */
+main > section {
+  padding: 4rem 0;
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+main > section::after {
+  content: "";
+  display: block;
+  height: .5px;
+  background: linear-gradient(to right, transparent, var(--brand-green), transparent);
+  margin-top: 6rem;
+}
+
+
+
 /* Basic reset */
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -36,6 +52,7 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
+
 /* Headings use Poppins for contrast */
 h1,h2,h3,h4{font-family:"Poppins",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; margin:0;}
 
@@ -45,103 +62,6 @@ h1,h2,h3,h4{font-family:"Poppins",system-ui,Segoe UI,Roboto,"Helvetica Neue",Ari
   margin:0 auto;
   padding:0 var(--container-pad);
 }
-
-/* Skip link */
-.skip-link{
-  position:absolute;
-  left:-9999px;
-  top:auto;
-  width:1px;
-  height:1px;
-  overflow:hidden;
-}
-.skip-link:focus{
-  left:1rem;
-  top:1rem;
-  width:auto;
-  height:auto;
-  padding:.5rem .75rem;
-  background:var(--brand-blue);
-  color:#fff;
-  border-radius:6px;
-  z-index:9999;
-}
-
-/* Header */
-/* .site-header{
-  background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter: blur(6px);
-  border-bottom:1px solid #eee;
-}
-.header-inner{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  padding:.8rem 0;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-  text-decoration:none;
-  color:var(--text);
-}
-.brand .brand-text{font-weight:700; font-size:1.05rem} */
-
-/* Logo sizing handled here */
-/* .logo{ width:40px; height:40px; display:block; } */
-
-/* Nav */
-/* .primary-nav ul{
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  gap:.75rem;
-  align-items:center;
-}
-.primary-nav a{
-  text-decoration:none;
-  color:var(--text);
-  padding:.5rem .6rem;
-  border-radius:8px;
-  font-weight:600;
-}
-.primary-nav a:hover,
-.primary-nav a:focus{ background:rgba(76,175,80,0.08); color:var(--brand-green) } */
-
-/* Mobile nav toggle */
-/* .nav-toggle{
-  margin-left:auto;
-  background:none;
-  border:0;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:.35rem;
-  cursor:pointer;
-}
-.hamburger{
-  width:28px;
-  height:2px;
-  background:var(--text);
-  position:relative;
-  display:block;
-}
-.hamburger::before,
-.hamburger::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  height:2px;
-  background:var(--text);
-}
-.hamburger::before{ top:-8px }
-.hamburger::after{ bottom:-8px } */
 
 /* HERO */
 .hero{
@@ -153,8 +73,8 @@ h1,h2,h3,h4{font-family:"Poppins",system-ui,Segoe UI,Roboto,"Helvetica Neue",Ari
 }
 .hero-copy h1{
   font-size:1.6rem;
-  margin:0 0 .5rem;
-  line-height:1.05;
+  margin:0 0 2rem;
+  line-height:1.15;
   color:var(--text);
 }
 .lead{
@@ -185,14 +105,10 @@ h1,h2,h3,h4{font-family:"Poppins",system-ui,Segoe UI,Roboto,"Helvetica Neue",Ari
   color:white;
   box-shadow:0 6px 18px rgba(76,175,80,0.18);
 }
-.btn.ghost{
-  background:transparent;
-  color:var(--brand-blue);
-  border:1px solid rgba(25,118,210,0.08);
-}
 
 /* How it works */
-.how-works{padding:1.25rem 0}
+.how-works{padding:1.25rem 0;
+text-align: center;}
 .how-works h2{font-size:1.25rem;margin:0 0 .25rem}
 .how-works .sub{color:var(--muted);margin:0 0 .75rem}
 .steps{
@@ -245,20 +161,23 @@ h1,h2,h3,h4{font-family:"Poppins",system-ui,Segoe UI,Roboto,"Helvetica Neue",Ari
 }
 
 .service-card {
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-  background: #fbfbfb;
-  padding: 0.9rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display:flex;
+  gap:1rem;
+  align-items:flex-start;
+  background:#fff;
+  border:1.5px solid #e3e3e3;
+  border-radius:var(--radius);
+  padding:1rem;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease, border .25s ease;
 }
 
 .service-card:hover,
 .service-card:focus {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transform:translateY(-4px);
+  border-color:var(--brand-green);
+  box-shadow:0 8px 22px rgba(76,175,80,0.25);
 }
 
 .service-card .icon {
@@ -282,6 +201,12 @@ h1,h2,h3,h4{font-family:"Poppins",system-ui,Segoe UI,Roboto,"Helvetica Neue",Ari
   margin: 0 0 0.4rem;
   line-height: 1.4;
 }
+.service-card .icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 
 /* Coverage Map */
 .coverage-map{
@@ -363,30 +288,6 @@ h1,h2,h3,h4{font-family:"Poppins",system-ui,Segoe UI,Roboto,"Helvetica Neue",Ari
 .pet-facts{padding:1.25rem 0}
 .pet-fact-text{font-weight:600;margin:.5rem 0 1rem}
 
-/* Booking */
-.booking{padding:1.25rem 0}
-.booking-form{margin-top:1rem}
-.form-grid{
-  display:grid;
-  gap:.75rem;
-  grid-template-columns:1fr;
-}
-label{display:flex;flex-direction:column;font-size:.95rem;color:var(--muted)}
-input,textarea,select{
-  margin-top:.45rem;
-  padding:.6rem .7rem;
-  border-radius:8px;
-  border:1px solid #e6e6e6;
-  font-family:inherit;
-  font-size:1rem;
-}
-label.full{grid-column:1/-1}
-.form-actions{margin-top:.6rem;display:flex;gap:.6rem;align-items:center}
-.form-msg{font-weight:600}
-.form-msg.success{ color: var(--brand-blue); }
-.form-msg.error{ color: var(--accent); }
-.booking-form.submitted { animation: submittedPulse 650ms ease; }
-@keyframes submittedPulse { 0% { transform:scale(1); } 50% { transform:scale(0.998); } 100% { transform:scale(1); } }
 
 /* -------------------------
    FAQ + Contact Section
@@ -480,14 +381,14 @@ label.full{grid-column:1/-1}
 }
 
 .btn-send:hover {
-  background: #444;
+  background: #FF5722;
 }
 
 /* Icons row */
 .contact-icons {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 10rem;
   font-size: 0.95rem;
   color: var(--muted);
   padding-top: 1rem;
@@ -500,6 +401,15 @@ label.full{grid-column:1/-1}
   align-items: center;
   gap: 0.4rem;
 }
+
+/* PNG Icon styling */
+.contact-icons img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
 
 /* Desktop layout */
 @media (min-width: 800px) {
@@ -554,4 +464,16 @@ label.full{grid-column:1/-1}
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   * { transition:none !important; animation:none !important; }
+}
+
+.contact-form label {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+  display: block;
+  color: var(--muted);
+}
+
+.req {
+  color: red;
+  margin-left: 2px;
 }
