@@ -3,6 +3,7 @@
 // - Mobile toggle
 // - Close on link click
 // - Scroll-spy active link highlight
+// - Smooth, stable navbar transform
 // -----------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const primaryNav = document.getElementById("primary-nav");
   const navLinks = document.querySelectorAll(".primary-nav a");
   const sections = document.querySelectorAll("section[id]");
+  const header = document.querySelector(".site-header");
+  const body = document.body;
 
   // ✅ Mobile menu toggle
   if (navToggle && primaryNav) {
@@ -35,34 +38,68 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ✅ Scroll-spy active nav indicator
+
+  // Final stable scroll-spy — no flicker, resets only at real top
   function updateActiveLink() {
-    const scrollPos = window.scrollY + window.innerHeight / 4;
+  const scrollPos = window.scrollY + window.innerHeight * 0.25; // smaller top focus area
+  let activeSection = null;
 
-    sections.forEach(section => {
-      const id = section.getAttribute("id");
+  // Loop through all sections to find which is in view
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 200; // top offset to trigger a bit later
+    const sectionBottom = sectionTop + section.offsetHeight;
 
-      if (
-        scrollPos >= section.offsetTop &&
-        scrollPos < section.offsetTop + section.offsetHeight
-      ) {
-        navLinks.forEach(link => {
+    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+      activeSection = section.getAttribute("id");
+    }
+  });
 
-          // ignore external / booking button
-          if (link.classList.contains("no-scroll")) {
-            link.classList.remove("active");
-            return;
-          }
-
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === `#${id}`
-          );
-        });
-      }
-    });
+  // Only trigger "Home" if truly near the very top of the page
+  if (window.scrollY < 80) {
+    activeSection = "home";
   }
 
-  window.addEventListener("scroll", updateActiveLink);
-  window.addEventListener("load", updateActiveLink);
+  // Fallback if no section matched (e.g., mid-transition)
+  if (!activeSection) return;
+
+  // Update link states
+  navLinks.forEach(link => {
+    if (link.classList.contains("no-scroll")) return;
+    const href = link.getAttribute("href");
+    link.classList.toggle("active", href === `#${activeSection}`);
+  });
+}
+
+// Smooth, stable vertical navbar transform (no flicker)
+  let isVertical = false;
+  let scrollTimer = null;
+
+  function handleNavTransform() {
+    if (!header) return;
+    const triggerPoint = 40; // scroll threshold before switching
+
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      if (window.scrollY > triggerPoint && !isVertical) {
+        header.classList.add("nav-vertical");
+        body.classList.add("nav-shifted");
+        isVertical = true;
+      } else if (window.scrollY <= triggerPoint && isVertical) {
+        header.classList.remove("nav-vertical");
+        body.classList.remove("nav-shifted");
+        isVertical = false;
+      }
+    }, 50); // debounce for stability
+  }
+
+  // Event listeners
+  window.addEventListener("scroll", () => {
+    updateActiveLink();
+    handleNavTransform();
+  });
+
+  window.addEventListener("load", () => {
+    updateActiveLink();
+    handleNavTransform();
+  });
 });

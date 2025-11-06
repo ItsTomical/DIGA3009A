@@ -16,7 +16,7 @@
     />
     <link rel="icon" type="image/png" href="images/favicon2.png" />
 
-    <!-- Main CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/paw_trail.css" />
@@ -33,25 +33,26 @@
       defer
     ></script>
 
-    <!-- Main JS -->
+    <!-- JS -->
     <script src="javascript/navbar.js"></script>
     <script src="javascript/script.js" defer></script>
   </head>
   <body>
     <!-- Floating stickers background -->
-    <div
+    <!-- <div
       class="background-stickers"
       id="backgroundStickers"
       aria-hidden="true"
-    ></div>
+    ></div> -->
     <header class="site-header" role="banner">
       <div class="container header-inner">
+        <!-- Brand (top) -->
         <a class="brand" href="#" aria-label="Trusty Paws homepage">
           <img class="logo" src="images/logo_icon.png" alt="Trusty Paws logo" />
           <span class="brand-text">Trusty Paws</span>
         </a>
 
-        <!-- Mobile button -->
+        <!-- Mobile button (hamburger) -->
         <button
           class="nav-toggle"
           aria-expanded="false"
@@ -61,7 +62,7 @@
           <span class="hamburger" aria-hidden="true"></span>
         </button>
 
-        <!-- Navigation -->
+        <!-- Navigation (centered links) -->
         <nav
           id="primary-nav"
           class="primary-nav"
@@ -69,20 +70,24 @@
           aria-label="Primary navigation"
         >
           <ul>
+            <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#how">How it works</a></li>
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li>
-              <a href="booking.html" class="cta no-scroll">Book Now 🐾</a>
-            </li>
+            <li><a href="about.html" class="no-scroll">About Me</a></li>
           </ul>
         </nav>
+
+        <!-- Book Now (separate bottom button) -->
+        <a href="booking.html" class="cta-nav no-scroll">Book Now 🐾</a>
       </div>
     </header>
 
+    <div id="nav-placeholder"></div>
+
     <main id="main">
-      <section class="hero" aria-label="Intro">
+      <section id="home" class="hero" aria-label="Intro">
         <div class="container hero-inner">
           <div class="hero-copy">
             <h1>
@@ -110,159 +115,166 @@
         </div>
       </section>
 
-      <section id="services" class="services">
-        <div class="container">
-          <h2>Services & Pricing</h2>
+      <div class="info-card">
+        <section id="services" class="services">
+          <div class="container">
+            <h2>Services & Pricing</h2>
 
-          <div class="service-list">
-            <article class="service-card" tabindex="0">
-              <div class="icon">
-                <img src="images/house_icon.png" alt="Daily visits icon" />
-              </div>
-              <div class="content">
-                <h3>Daily Visits</h3>
-                <p>
-                  Quick check-ins to feed, water, give attention, and let your
-                  pet out for a bathroom break.
-                </p>
-                <p>
-                  <strong>Price range:</strong> R120 – R180 per visit (depending
-                  on pet needs).<br />
-                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
-                  km radius.
-                </p>
-              </div>
-            </article>
+            <div class="service-list">
+              <article class="service-card" tabindex="0">
+                <div class="icon">
+                  <img src="images/house_icon.png" alt="Daily visits icon" />
+                </div>
+                <div class="content">
+                  <h3>Daily Visits</h3>
+                  <p>
+                    Quick check-ins to feed, water, give attention, and let your
+                    pet out for a bathroom break.
+                  </p>
+                  <p>
+                    <strong>Price range:</strong> R120 – R180 per visit
+                    (depending on pet needs).<br />
+                    <strong>Extra travel fee:</strong> R10 – R15 per km beyond a
+                    5 km radius.
+                  </p>
+                </div>
+              </article>
 
-            <article class="service-card" tabindex="0">
-              <div class="icon">
-                <img
-                  src="images/man_with_dog_icon.png"
-                  alt="Dog walking icon"
-                />
-              </div>
-              <div class="content">
-                <h3>Dog Walking</h3>
-                <p>
-                  A dedicated walk to keep your dog active, happy, and
-                  socialised. Walks are tailored to your dog’s energy level and
-                  needs.
-                </p>
-                <p>
-                  <strong>Price range:</strong> R150 – R250 per walk (30–60
-                  minutes).<br />
-                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
-                  km radius.
-                </p>
-              </div>
-            </article>
+              <article class="service-card" tabindex="0">
+                <div class="icon">
+                  <img
+                    src="images/man_with_dog_icon.png"
+                    alt="Dog walking icon"
+                  />
+                </div>
+                <div class="content">
+                  <h3>Dog Walking</h3>
+                  <p>
+                    A dedicated walk to keep your dog active, happy, and
+                    socialised. Walks are tailored to your dog’s energy level
+                    and needs.
+                  </p>
+                  <p>
+                    <strong>Price range:</strong> R150 – R250 per walk (30–60
+                    minutes).<br />
+                    <strong>Extra travel fee:</strong> R10 – R15 per km beyond a
+                    5 km radius.
+                  </p>
+                </div>
+              </article>
 
-            <article class="service-card" tabindex="0">
-              <div class="icon">
-                <img src="images/bed_icon.png" alt="Overnight stays icon" />
-              </div>
-              <div class="content">
-                <h3>Overnight Stays</h3>
-                <p>
-                  Overnight care in your home including feeding, walks,
-                  playtime, and supervision to keep your pet comfortable.
-                </p>
-                <p>
-                  <strong>Price range:</strong> R500 – R700 per night.<br />
-                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
-                  km radius.
-                </p>
-              </div>
-            </article>
+              <article class="service-card" tabindex="0">
+                <div class="icon">
+                  <img src="images/bed_icon.png" alt="Overnight stays icon" />
+                </div>
+                <div class="content">
+                  <h3>Overnight Stays</h3>
+                  <p>
+                    Overnight care in your home including feeding, walks,
+                    playtime, and supervision to keep your pet comfortable.
+                  </p>
+                  <p>
+                    <strong>Price range:</strong> R500 – R700 per night.<br />
+                    <strong>Extra travel fee:</strong> R10 – R15 per km beyond a
+                    5 km radius.
+                  </p>
+                </div>
+              </article>
 
-            <article class="service-card" tabindex="0">
-              <div class="icon">
-                <img src="images/timer_icon.png" alt="Hourly visits icon" />
-              </div>
-              <div class="content">
-                <h3>Hourly Visits</h3>
-                <p>
-                  Flexible care at home for however long your pet needs —
-                  feeding, playtime, potty breaks, and companionship.
-                </p>
-                <p>
-                  <strong>Price range:</strong> R100 – R150 per hour.<br />
-                  <strong>Extra travel fee:</strong> R10 – R15 per km beyond a 5
-                  km radius.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="how" class="how-works">
-        <div class="container">
-          <h2>How it works</h2>
-          <p class="sub">
-            Simple steps to book and feel confident your pet is in great hands.
-          </p>
-
-          <ol class="steps" aria-label="How it works steps">
-            <li>
-              <div class="step-number">1</div>
-              <h3>Pick Your Service</h3>
-              <p>Choose Dog Walking, Drop-In Visits, or an Overnight Stay.</p>
-            </li>
-            <li>
-              <div class="step-number">2</div>
-              <h3>Share Pet Details</h3>
-              <p>
-                Complete a quick checklist: feeding, meds, favourite toys and
-                behaviour notes.
-              </p>
-            </li>
-            <li>
-              <div class="step-number">3</div>
-              <h3>Confirm Booking</h3>
-              <p>
-                Request a booking — we’ll confirm availability and next steps.
-              </p>
-            </li>
-            <li>
-              <div class="step-number">4</div>
-              <h3>Stay Updated</h3>
-              <p>Receive updates, photos and notes during each visit.</p>
-            </li>
-            <li>
-              <div class="step-number">5</div>
-              <h3>Review & Rebook</h3>
-              <p>
-                Happy with the care? Share your feedback and easily rebook for
-                next time.
-              </p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="coverage-map">
-        <div class="container">
-          <h2>Coverage Map</h2>
-          <form class="coverage-form" onsubmit="return false;">
-            <label for="suburb">Enter your suburb</label>
-            <div class="input-group">
-              <input id="suburb" type="text" placeholder="e.g. Sandton" />
-              <button
-                type="button"
-                id="check-suburb"
-                aria-label="Check coverage"
-              >
-                &rarr;
-              </button>
+              <article class="service-card" tabindex="0">
+                <div class="icon">
+                  <img src="images/timer_icon.png" alt="Hourly visits icon" />
+                </div>
+                <div class="content">
+                  <h3>Hourly Visits</h3>
+                  <p>
+                    Flexible care at home for however long your pet needs —
+                    feeding, playtime, potty breaks, and companionship.
+                  </p>
+                  <p>
+                    <strong>Price range:</strong> R100 – R150 per hour.<br />
+                    <strong>Extra travel fee:</strong> R10 – R15 per km beyond a
+                    5 km radius.
+                  </p>
+                </div>
+              </article>
             </div>
-          </form>
-
-          <div id="map-placeholder" class="map-placeholder" aria-hidden="true">
-            <p>Map loading...</p>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section id="how" class="how-works">
+          <div class="container">
+            <h2>How it works</h2>
+            <p class="sub">
+              Simple steps to book and feel confident your pet is in great
+              hands.
+            </p>
+
+            <ol class="steps" aria-label="How it works steps">
+              <li>
+                <div class="step-number">1</div>
+                <h3>Pick Your Service</h3>
+                <p>Choose Dog Walking, Drop-In Visits, or an Overnight Stay.</p>
+              </li>
+              <li>
+                <div class="step-number">2</div>
+                <h3>Share Pet Details</h3>
+                <p>
+                  Complete a quick checklist: feeding, meds, favourite toys and
+                  behaviour notes.
+                </p>
+              </li>
+              <li>
+                <div class="step-number">3</div>
+                <h3>Confirm Booking</h3>
+                <p>
+                  Request a booking — we’ll confirm availability and next steps.
+                </p>
+              </li>
+              <li>
+                <div class="step-number">4</div>
+                <h3>Stay Updated</h3>
+                <p>Receive updates, photos and notes during each visit.</p>
+              </li>
+              <li>
+                <div class="step-number">5</div>
+                <h3>Review & Rebook</h3>
+                <p>
+                  Happy with the care? Share your feedback and easily rebook for
+                  next time.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="coverage-map">
+          <div class="container">
+            <h2>Coverage Map</h2>
+            <form class="coverage-form" onsubmit="return false;">
+              <label for="suburb">Enter your suburb</label>
+              <div class="input-group">
+                <input id="suburb" type="text" placeholder="e.g. Sandton" />
+                <button
+                  type="button"
+                  id="check-suburb"
+                  aria-label="Check coverage"
+                >
+                  &rarr;
+                </button>
+              </div>
+            </form>
+
+            <div
+              id="map-placeholder"
+              class="map-placeholder"
+              aria-hidden="true"
+            >
+              <p>Map loading...</p>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <section id="reviews" class="reviews">
         <div class="container">

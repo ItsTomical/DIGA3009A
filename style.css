@@ -23,11 +23,11 @@ html {
 }
 
 /* Section spacing + divider line */
-main > section {
+/* main > section {
   padding: 4rem 0;
   margin-bottom: 6rem;
   position: relative;
-}
+} */
 
 main > section::after {
   content: "";
@@ -176,8 +176,8 @@ text-align: center;}
 .service-card:hover,
 .service-card:focus {
   transform:translateY(-4px);
-  border-color:var(--brand-green);
-  box-shadow:0 8px 22px rgba(76,175,80,0.25);
+  border-color: #333333;
+  box-shadow:0 8px 22px rgba(0, 0, 0, 0.5);
 }
 
 .service-card .icon {
@@ -476,4 +476,37 @@ text-align: center;}
 .req {
   color: red;
   margin-left: 2px;
+}
+
+
+/* -------------------------
+   Info Card Wrapper
+-------------------------- */
+.info-card {
+  background: #a27552;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: var(--max-width);
+  border: 1px solid #e5e5e5;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.info-card:hover {
+  box-shadow: 0 12px 30px rgba(76, 175, 80, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Make inner sections flow nicely */
+.info-card section {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 2rem;
+}
+
+.info-card section:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About — Trusty Paws</title>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon2.png" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/about.css" />
+
+    <!-- JS -->
+    <script src="javascript/navbar.js" defer></script>
+    <script src="javascript/about.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Trusty Paws homepage">
+          <img class="logo" src="images/logo_icon.png" alt="Trusty Paws logo" />
+          <span class="brand-text">Trusty Paws</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Open menu"
+        >
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="primary-nav"
+          role="navigation"
+          aria-label="Primary navigation"
+        >
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="about.html" class="active no-scroll">About Me</a></li>
+          </ul>
+        </nav>
+
+        <a href="booking.html" class="cta-nav no-scroll">Book Now 🐾</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="about-section container">
+        <div class="about-text">
+          <h2>Behind the Paws</h2>
+          <p>
+            Hey there! I’m <strong>Thomas</strong>, the heart behind
+            <strong>Trusty Paws</strong>. I’ve always loved caring for animals,
+            and my four cats keep me smiling (and occasionally chasing toy
+            mice). Every pet I care for gets the same love, comfort, and
+            attention I give my own — because that’s what I believe pet care
+            should be about: trust, compassion, and connection.
+          </p>
+          <p>
+            Here’s a peek behind the scenes — me and my four feline
+            “assistants”:
+          </p>
+        </div>
+
+        <div class="photo-gallery">
+          <div class="photo-card">
+            <img src="images/cat1.jpg" alt="Whiskers" />
+            <p>Whiskers</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/cat2.jpg" alt="Luna" />
+            <p>Luna</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/me.jpg" alt="Thomas" />
+            <p>Thomas</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/cat3.jpg" alt="Milo" />
+            <p>Milo</p>
+          </div>
+          <div class="photo-card">
+            <img src="images/cat4.jpg" alt="Cleo" />
+            <p>Cleo</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>&copy; <span id="year"></span> Trusty Paws. All rights reserved.</p>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
