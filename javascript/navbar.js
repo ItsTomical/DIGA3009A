@@ -1,11 +1,10 @@
 // -----------------------------
-// NAVIGATION LOGIC
+// NAVIGATION LOGIC (clean, stable)
 // - Mobile toggle
 // - Close on link click
-// - Scroll-spy (homepage only)
-// - Vertical nav transform (homepage only)
+// - Scroll-spy active link highlight
+// - Desktop vertical navbar transform (stable, no flicker)
 // -----------------------------
-
 document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav-toggle");
   const primaryNav = document.getElementById("primary-nav");
@@ -13,14 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site-header");
   const body = document.body;
 
-  // Detect if we're on the homepage (index.html)
+  // Detect homepage (adjust if your routing differs)
   const isHomePage =
     window.location.pathname.endsWith("index.html") ||
     window.location.pathname === "/" ||
     window.location.pathname === "/TrustyPaws/" ||
     window.location.pathname.includes("home"); // safety for local testing
 
+  // ------------------------
   // Mobile menu toggle
+  // ------------------------
   if (navToggle && primaryNav) {
     navToggle.addEventListener("click", () => {
       const expanded = navToggle.getAttribute("aria-expanded") === "true";
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       primaryNav.classList.toggle("open");
     });
 
-    // Close menu when clicking a link (mobile only)
+    // Close mobile menu when any nav link is clicked
     navLinks.forEach(link => {
       link.addEventListener("click", () => {
         if (primaryNav.classList.contains("open")) {
@@ -44,16 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-// ----------------------------------------------------------
-// HOMEPAGE ONLY: Scroll Spy + Vertical Navbar Transform
-// ----------------------------------------------------------
-if (isHomePage) {
+  // ------------------------
+  // Scroll-spy: highlights active section link
+  // ------------------------
   const sections = document.querySelectorAll("section[id]");
-  let isVertical = false;
-  let scrollTimer = null;
 
-  // Scroll spy for active link highlighting
   function updateActiveLink() {
+    if (!sections || sections.length === 0) return;
+
     const scrollPos = window.scrollY + window.innerHeight * 0.25;
     let activeSection = null;
 
@@ -65,6 +64,7 @@ if (isHomePage) {
       }
     });
 
+    // "Home" only when near top
     if (window.scrollY < 80) activeSection = "home";
     if (!activeSection) return;
 
@@ -75,62 +75,119 @@ if (isHomePage) {
     });
   }
 
-  // Handle the transform between horizontal ↔ vertical navbar (DESKTOP ONLY)
+  // ------------------------
+  // Desktop vertical navbar transform (stable)
+  // ------------------------
+  let isVertical = false;
+  let scrollTimer = null;
+
+  function activateVerticalNav() {
+    // Set inline styles to ensure it stays fixed in left column
+    header.style.position = "fixed";
+    header.style.top = "0";
+    header.style.left = "0";
+    header.style.width = "120px";
+    header.style.height = "100vh";
+
+    header.classList.add("nav-vertical");
+    body.classList.add("nav-shifted");
+    isVertical = true;
+  }
+
+  function deactivateVerticalNav() {
+    header.classList.remove("nav-vertical");
+    body.classList.remove("nav-shifted");
+    isVertical = false;
+
+    // Restore header to default (sticky horizontal)
+    header.style.position = "sticky";
+    header.style.top = "0";
+    header.style.left = "";
+    header.style.width = "";
+    header.style.height = "";
+  }
+
+  function ensureMobileHeader() {
+    // Make header fixed across mobile/tablet (no vertical)
+    header.classList.remove("nav-vertical");
+    body.classList.remove("nav-shifted");
+    isVertical = false;
+    header.style.position = "fixed";
+    header.style.top = "0";
+    header.style.left = "0";
+    header.style.width = "100%";
+    header.style.height = "";
+  }
+
   function handleNavTransform() {
     if (!header) return;
 
-    // 🟢 MOBILE/TABLET FIX: Make navbar fixed instead of sticky
-    if (window.innerWidth <= 780) {
-      header.classList.remove("nav-vertical");
-      body.classList.remove("nav-shifted");
-      isVertical = false;
+    const isMobile = window.innerWidth <= 780;
+    const triggerPoint = 40;
 
-      // Apply fixed behavior (same as About/Booking pages)
-      header.style.position = "fixed";
-      header.style.top = "0";
-      header.style.left = "0";
-      header.style.width = "100%";
+    // Mobile/tablet: no vertical nav, make header fixed
+    if (isMobile) {
+      // Also close mobile menu if open when resizing to mobile width
+      if (primaryNav && primaryNav.classList.contains("open")) {
+        primaryNav.classList.remove("open");
+        if (navToggle) navToggle.classList.remove("active");
+        if (navToggle) {
+          navToggle.setAttribute("aria-expanded", "false");
+          navToggle.setAttribute("aria-label", "Open menu");
+        }
+      }
+      ensureMobileHeader();
       return;
     }
 
-    // 🖥️ DESKTOP ONLY: enable vertical transformation
-    header.style.position = "sticky";
-    const triggerPoint = 40;
+    // Desktop: use debounce for stable toggling
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(() => {
       if (window.scrollY > triggerPoint && !isVertical) {
-        header.classList.add("nav-vertical");
-        body.classList.add("nav-shifted");
-        isVertical = true;
-      } else if (window.scrollY <= triggerPoint && isVertical) {
-        header.classList.remove("nav-vertical");
-        body.classList.remove("nav-shifted");
-        isVertical = false;
+        activateVerticalNav();
+      } else if (window.scrollY <= 0 && isVertical) {
+        // only revert when at the very top
+        deactivateVerticalNav();
       }
+      // If neither condition, keep current state (prevents flicker)
     }, 50);
   }
 
-  window.addEventListener("scroll", () => {
-    updateActiveLink();
-    handleNavTransform();
-  });
+  // ------------------------
+  // Event listeners (single set)
+  // ------------------------
+  if (isHomePage) {
+    window.addEventListener("scroll", () => {
+      updateActiveLink();
+      handleNavTransform();
+    });
 
-  window.addEventListener("resize", handleNavTransform);
-  window.addEventListener("load", () => {
-    updateActiveLink();
-    handleNavTransform();
-  });
-} else {
-  // ----------------------------------------------------------
-  // BOOKING / ABOUT PAGES: Fixed horizontal navbar
-  // ----------------------------------------------------------
-  header.style.position = "fixed";
-  header.style.top = "0";
-  header.style.left = "0";
-  header.style.width = "100%";
-  body.classList.remove("nav-shifted");
-  header.classList.remove("nav-vertical");
-}
+    window.addEventListener("resize", () => {
+      handleNavTransform();
 
+      // If switching from small -> large and hamburger is open, close it
+      if (window.innerWidth > 780 && primaryNav && primaryNav.classList.contains("open")) {
+        primaryNav.classList.remove("open");
+        if (navToggle) navToggle.classList.remove("active");
+        if (navToggle) {
+          navToggle.setAttribute("aria-expanded", "false");
+          navToggle.setAttribute("aria-label", "Open menu");
+        }
+      }
+    });
 
+    // Run once on load to initialize state
+    window.addEventListener("load", () => {
+      updateActiveLink();
+      handleNavTransform();
+    });
+  } else {
+    // Non-home pages: fixed horizontal header (Booking / About)
+    header.style.position = "fixed";
+    header.style.top = "0";
+    header.style.left = "0";
+    header.style.width = "100%";
+    body.classList.remove("nav-shifted");
+    header.classList.remove("nav-vertical");
+  }
 });
