@@ -1,0 +1,111 @@
+/* ==========================================
+   Trusty Paws — Global Base Css
+   ========================================== */
+
+/* Brand Variables (used site-wide) */
+:root {
+  --brand-green: #4CAF50;
+  --brand-blue: #1976D2;
+  --accent: #FF5722;
+  --bg: #ffffff;
+  --text: #333333;
+  --muted: #6b6b6b;
+  --radius: 12px;
+  --max-width: 1100px;
+  --container-pad: 1rem;
+  --shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reset and body defaults */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Lora", serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: "Poppins", system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+}
+
+/* Layout container (critical for navbar width) */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* Buttons (shared style base) */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+  padding: .6rem .9rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn.small { padding: .45rem .65rem; }
+
+.btn.primary {
+  background: var(--brand-green);
+  color: white;
+  box-shadow: 0 6px 18px rgba(76, 175, 80, 0.18);
+}
+
+/* -------------------------
+   Footer
+-------------------------- */
+
+.site-footer {
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+  margin-top: 1.25rem;
+}
+.footer-inner {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-nav ul {
+  display: flex;
+  gap: .6rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Utility text color */
+.req {
+  color: red;
+  margin-left: 2px;
+}
+
+/* Base responsive breakpoints */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Fix mobile zoom-out issue */
+@media (max-width: 720px) {
+  .container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+

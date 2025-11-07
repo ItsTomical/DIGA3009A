@@ -70,36 +70,48 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 }
 
-// Smooth, stable vertical navbar transform (no flicker)
-  let isVertical = false;
-  let scrollTimer = null;
+// ✅ Smooth, stable vertical navbar transform (desktop only)
+let isVertical = false;
+let scrollTimer = null;
 
-  function handleNavTransform() {
-    if (!header) return;
-    const triggerPoint = 40; // scroll threshold before switching
+function handleNavTransform() {
+  if (!header) return;
 
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => {
-      if (window.scrollY > triggerPoint && !isVertical) {
-        header.classList.add("nav-vertical");
-        body.classList.add("nav-shifted");
-        isVertical = true;
-      } else if (window.scrollY <= triggerPoint && isVertical) {
-        header.classList.remove("nav-vertical");
-        body.classList.remove("nav-shifted");
-        isVertical = false;
-      }
-    }, 50); // debounce for stability
+  const triggerPoint = 40; // scroll threshold before switching
+  const isMobile = window.innerWidth <= 780; // disable vertical nav on mobile
+
+  // Don't use vertical nav on mobile
+  if (isMobile) {
+    header.classList.remove("nav-vertical");
+    body.classList.remove("nav-shifted");
+    isVertical = false;
+    return;
   }
 
-  // Event listeners
-  window.addEventListener("scroll", () => {
-    updateActiveLink();
-    handleNavTransform();
-  });
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => {
+    if (window.scrollY > triggerPoint && !isVertical) {
+      header.classList.add("nav-vertical");
+      body.classList.add("nav-shifted");
+      isVertical = true;
+    } else if (window.scrollY <= triggerPoint && isVertical) {
+      header.classList.remove("nav-vertical");
+      body.classList.remove("nav-shifted");
+      isVertical = false;
+    }
+  }, 50);
+}
 
-  window.addEventListener("load", () => {
-    updateActiveLink();
-    handleNavTransform();
-  });
+// ✅ Event listeners
+window.addEventListener("scroll", () => {
+  updateActiveLink();
+  handleNavTransform();
+});
+
+window.addEventListener("resize", handleNavTransform); // keep consistent when resizing
+window.addEventListener("load", () => {
+  updateActiveLink();
+  handleNavTransform();
+});
+
 });

@@ -1,8 +1,10 @@
-/* -----------------------------
-   NAVBAR
-   ----------------------------- */
+/* =========================================================
+   TRUSTY PAWS NAVBAR STYLES
+   ========================================================= */
 
-/* ========== Base Header ========== */
+/* ---------------------------------------------------------
+   1. BASE HEADER STYLES
+   --------------------------------------------------------- */
 .site-header {
   --header-height: 80px;
   position: sticky;
@@ -11,6 +13,7 @@
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(14px) saturate(180%);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.4s ease, transform 0.4s ease;
 }
 
@@ -21,7 +24,9 @@
   padding: 0.9rem 0;
 }
 
-/* ========== Branding ========== */
+/* ---------------------------------------------------------
+   2. BRANDING
+   --------------------------------------------------------- */
 .brand {
   display: flex;
   align-items: center;
@@ -36,7 +41,9 @@
   height: auto;
 }
 
-/* ========== Horizontal Navigation Layout ========== */
+/* ---------------------------------------------------------
+   3. HORIZONTAL NAVIGATION LAYOUT
+   --------------------------------------------------------- */
 .primary-nav {
   flex: 1;
   display: flex;
@@ -60,10 +67,14 @@
   padding: 0.5rem 0.7rem;
   border-radius: 10px;
   cursor: url('paw-cursor.png'), pointer;
-  transition: color 0.3s ease, transform 0.25s cubic-bezier(.175,.885,.32,1.275);
+  transition: color 0.3s ease, transform 0.25s cubic-bezier(.175, .885, .32, 1.275);
 }
 
-/* ========== Horizontal Hover & Active States ========== */
+/* ---------------------------------------------------------
+   4. HORIZONTAL HOVER & ACTIVE STATES
+   --------------------------------------------------------- */
+
+/* --- Hover (green text + soft yellow background) --- */
 .primary-nav a:hover {
   transform: translateY(-3px);
   background: rgba(255, 165, 0, 0.15);
@@ -71,7 +82,7 @@
   color: var(--brand-green);
 }
 
-/* Smooth Underline Animation */
+/* --- Smooth Underline Animation --- */
 .primary-nav a::after {
   content: "";
   position: absolute;
@@ -94,6 +105,7 @@
   opacity: 1;
 }
 
+/* Active (orange text + underline) */
 .primary-nav a.active {
   color: var(--accent);
 }
@@ -105,6 +117,7 @@
   animation: underlineSlide 0.35s ease forwards;
 }
 
+/* Underline slide-in keyframes */
 @keyframes underlineSlide {
   from {
     width: 0;
@@ -118,7 +131,9 @@
   }
 }
 
-/* ========== CTA Button/Book Now Button ========== */
+/* ---------------------------------------------------------
+   5. CALL TO ACTION BUTTON ("Book Now")
+   --------------------------------------------------------- */
 .cta-nav {
   background: var(--brand-green);
   color: #fff;
@@ -134,7 +149,9 @@
   transform: translateY(-2px);
 }
 
-/* ========== Hamburger (Mobile Toggle) ========== */
+/* ---------------------------------------------------------
+   6. HAMBURGER (MOBILE TOGGLE)
+   --------------------------------------------------------- */
 .nav-toggle {
   display: none;
   background: none;
@@ -176,7 +193,9 @@
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* ========== Mobile Navigation ========== */
+/* ---------------------------------------------------------
+   7. MOBILE NAVIGATION
+   --------------------------------------------------------- */
 @media (max-width: 780px) {
   .nav-toggle { display: block; }
 
@@ -188,7 +207,7 @@
     background: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     display: none;
-    animation: slideDown 0.35s cubic-bezier(.22,.61,.36,1);
+    animation: slideDown 0.35s cubic-bezier(.22, .61, .36, 1);
   }
 
   @keyframes slideDown {
@@ -209,7 +228,11 @@
   }
 }
 
-/* ========== Vertical Sidebar Mode ========== */
+/* ---------------------------------------------------------
+   8. VERTICAL SIDEBAR MODE
+   --------------------------------------------------------- */
+
+/* --- Base Layout --- */
 .site-header.nav-vertical {
   position: fixed;
   top: 0;
@@ -242,6 +265,7 @@
   width: 100%;
 }
 
+/* --- Branding --- */
 .site-header.nav-vertical .brand {
   flex-direction: column;
   align-items: center;
@@ -253,6 +277,7 @@
   font-size: 0.9rem;
 }
 
+/* --- Navigation Layout --- */
 .site-header.nav-vertical .primary-nav {
   flex-grow: 1;
   display: flex;
@@ -271,18 +296,29 @@
   list-style: none;
 }
 
+/* --- Nav Links --- */
 .site-header.nav-vertical .primary-nav a {
+  position: relative;
   display: block;
   width: 100%;
   text-align: center;
   font-weight: 600;
   color: var(--text);
   text-decoration: none;
-  padding: 0.4rem 0;
-  transition: color 0.3s ease;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  transition: color 0.3s ease, background 0.3s ease, transform 0.25s cubic-bezier(.175, .885, .32, 1.275);
 }
 
-.site-header.nav-vertical .primary-nav a:hover,
+/* --- Hover (green text + yellow background) --- */
+.site-header.nav-vertical .primary-nav a:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 165, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  color: var(--brand-green);
+}
+
+/* --- Active (orange text + underline) --- */
 .site-header.nav-vertical .primary-nav a.active {
   color: var(--accent);
 }
@@ -301,6 +337,7 @@
   transition: all 0.3s ease;
 }
 
+/* --- CTA Button --- */
 .site-header.nav-vertical .cta-nav {
   width: 80%;
   margin-bottom: 1rem;
@@ -319,17 +356,18 @@
   transform: translateY(-2px);
 }
 
+/* --- Hide Toggle in Vertical Mode --- */
 .site-header.nav-vertical .nav-toggle {
   display: none;
 }
 
-/* Shift main content when sidebar visible */
+/* --- Shift Page Content --- */
 body.nav-shifted main {
   margin-left: 120px;
   transition: margin-left 0.6s ease;
 }
 
-/* ========== Fade Animation (Back to Horizontal) ========== */
+/* --- Fade Animation When Returning to Horizontal --- */
 body:not(.nav-shifted) .site-header {
   animation: fadeDown 0.4s ease forwards;
 }

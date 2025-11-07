@@ -1,0 +1,466 @@
+/* ==========================================
+   Trusty Paws — Homepage Css
+   ========================================== */
+
+/* -------------------------
+   Section Divider
+-------------------------- */
+main > section::after {
+  content: "";
+  display: block;
+  height: 0.5px;
+  background: linear-gradient(to right, transparent, var(--brand-green), transparent);
+  margin-top: 6rem;
+}
+
+/* Section spacing + divider line */
+/* main > section {
+  padding: 4rem 0;
+  margin-bottom: 6rem;
+  position: relative;
+} */
+
+/* -------------------------
+   HERO SECTION
+-------------------------- */
+.hero {
+  padding: 1.25rem 0 2rem;
+}
+
+.hero-inner {
+  display: grid;
+  gap: 1rem;
+}
+
+.hero-copy h1 {
+  font-size: 1.6rem;
+  margin: 0 0 2rem;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.lead {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+/* -------------------------
+   SERVICES SECTION
+-------------------------- */
+.services {
+  padding: 1.25rem 0;
+}
+
+.services h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+  text-align: center;
+}
+
+.service-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+  margin: 1rem 0 0;
+}
+
+.service-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1.5px solid #e3e3e3;
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
+}
+
+.service-card:hover,
+.service-card:focus {
+  transform: translateY(-4px);
+  border-color: #333333;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+}
+
+.service-card .icon {
+  flex: 0 0 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--brand-green), var(--brand-blue));
+  color: #fff;
+  border-radius: 10px;
+}
+
+.service-card .content h3 {
+  margin: 0 0 0.3rem;
+  color: var(--brand-blue);
+}
+
+.service-card .content p {
+  color: var(--muted);
+  margin: 0 0 0.4rem;
+  line-height: 1.4;
+}
+
+.service-card .icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* -------------------------
+   HOW IT WORKS SECTION
+-------------------------- */
+.how-works {
+  padding: 1.25rem 0;
+  text-align: center;
+}
+
+.how-works h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.25rem;
+}
+
+.how-works .sub {
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.steps {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+  margin: 1rem 0 0;
+}
+
+.steps li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: #fbfbfb;
+  padding: 0.9rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.step-number {
+  flex: 0 0 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--brand-green), var(--brand-blue));
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+/* -------------------------
+   COVERAGE MAP
+-------------------------- */
+.coverage-map {
+  padding: 2rem 0;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.coverage-map h2 {
+  margin-bottom: 1rem;
+}
+
+.coverage-form {
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.coverage-form label {
+  display: none;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group input {
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.input-group button {
+  padding: 0.6rem 1rem;
+  background: var(--brand-green);
+  border: none;
+  color: #fff;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.25s ease;
+}
+
+.input-group button:hover {
+  background: var(--brand-blue);
+}
+
+.map-placeholder {
+  background: linear-gradient(135deg, #d9e8ff, #b0cffa);
+  border-radius: var(--radius);
+  padding: 3rem 0;
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+.map-placeholder p {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* -------------------------
+   REVIEWS SECTION
+-------------------------- */
+.reviews {
+  padding: 1.25rem 0;
+}
+
+.reviews-wrap {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.reviews-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.reviews-list li {
+  min-width: 260px;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.carousel-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* -------------------------
+   PET FACTS SECTION
+-------------------------- */
+.pet-facts {
+  padding: 1.25rem 0;
+}
+
+.pet-fact-text {
+  font-weight: 600;
+  margin: 0.5rem 0 1rem;
+}
+
+/* -------------------------
+   FAQ + CONTACT SECTION
+-------------------------- */
+.faq-contact {
+  padding: 2rem 0;
+  background: #fff;
+}
+
+.faq-contact-inner {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.faq-box,
+.contact-box {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.faq-box h3,
+.contact-box h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--brand-blue);
+}
+
+/* FAQ Accordion */
+.faq-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.faq-question:hover {
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 1rem 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-form label {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+  display: block;
+  color: var(--muted);
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.btn-send {
+  background: #666;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.btn-send:hover {
+  background: var(--accent);
+}
+
+/* Contact icons row */
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  margin-top: 1.5rem;
+}
+
+.contact-icons div {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.contact-icons img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* -------------------------
+   INFO CARD WRAPPER
+-------------------------- */
+.info-card {
+  background: #a27552;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: var(--max-width);
+  border: 1px solid #e5e5e5;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.info-card:hover {
+  box-shadow: 0 12px 30px rgba(76, 175, 80, 0.15);
+  transform: translateY(-3px);
+}
+
+.info-card section {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 2rem;
+}
+
+.info-card section:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* -------------------------
+   RESPONSIVE LAYOUTS
+-------------------------- */
+@media (min-width: 720px) {
+  .hero-inner { grid-template-columns: 1fr 420px; align-items: center; }
+  .hero-copy h1 { font-size: 2rem; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .reviews-list { min-height: 140px; }
+  .form-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 800px) {
+  .faq-contact-inner {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1000px) {
+  :root { --container-pad: 2rem; }
+  .hero-copy h1 { font-size: 2.6rem; }
+  .reviews-list li { min-width: 320px; }
+}

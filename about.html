@@ -4,19 +4,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>About — Trusty Paws</title>
+    <meta
+      name="description"
+      content="Learn more about Trusty Paws — the heart behind Johannesburg’s trusted pet sitting, dog walking, and daily visit service. Meet Thomas and his furry friends who make pet care personal, loving, and reliable."
+    />
 
     <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon2.png" />
 
     <!-- CSS -->
+    <link rel="stylesheet" href="base.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/paw_trail.css" />
+
+    <!-- GSAP (animations) -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"
+      defer
+    ></script>
 
     <!-- JS -->
     <script src="javascript/navbar.js" defer></script>
@@ -31,6 +46,7 @@
           <span class="brand-text">Trusty Paws</span>
         </a>
 
+        <!-- Mobile button (hamburger) -->
         <button
           class="nav-toggle"
           aria-expanded="false"
@@ -40,6 +56,7 @@
           <span class="hamburger" aria-hidden="true"></span>
         </button>
 
+        <!-- Navigation -->
         <nav
           id="primary-nav"
           class="primary-nav"
@@ -55,6 +72,7 @@
           </ul>
         </nav>
 
+        <!-- Book Now -->
         <a href="booking.html" class="cta-nav no-scroll">Book Now 🐾</a>
       </div>
     </header>
@@ -114,5 +132,7 @@
         </nav>
       </div>
     </footer>
+
+    <script src="javascript/paw_trail.js"></script>
   </body>
 </html>

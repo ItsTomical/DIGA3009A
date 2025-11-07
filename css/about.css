@@ -1,57 +1,73 @@
-/* -------------------------
-   About Page — Trusty Paws
-   ------------------------- */
+/* ==========================================
+   Trusty Paws — About Page
+   Perfect font match to Homepage
+   ========================================== */
 
-:root {
-  --brand-green: #4caf50;
-  --brand-blue: #1976d2;
-  --accent: #ff5722;
-  --bg: #ffffff;
-  --text: #333333;
-  --muted: #6b6b6b;
-  --radius: 12px;
-  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Body text = Lora (same as homepage) */
 body {
   font-family: "Lora", serif;
+  font-weight: 400;
+  color: var(--text);
   background: var(--bg);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Headings = Poppins (same as homepage) */
+h1, h2, h3, h4 {
+  font-family: "Poppins", system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 700;
   color: var(--text);
   margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
 }
 
-h2 {
-  font-family: "Poppins", sans-serif;
-  color: var(--brand-blue);
+/* Strong text = heavier (matches homepage emphasis) */
+strong {
+  font-weight: 600;
+  color: var(--text);
 }
 
-/* ————— Section ————— */
+/* -------------------------
+   Section Layout
+-------------------------- */
 .about-section {
   padding: 4rem 1rem 6rem;
   text-align: center;
-  max-width: 1100px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
+/* -------------------------
+   About Text
+-------------------------- */
 .about-text {
   margin-bottom: 3rem;
 }
 
 .about-text h2 {
+  color: var(--brand-blue);
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
 .about-text p {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-size: 1.05rem;
   color: var(--muted);
-  font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
 
-/* ————— Cards ————— */
+/* -------------------------
+   Photo Gallery
+-------------------------- */
 .photo-gallery {
   display: flex;
   justify-content: center;
@@ -80,13 +96,15 @@ h2 {
 
 .photo-card p {
   margin: 10px 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--brand-blue);
 }
 
-/* Base hover fallback */
+/* -------------------------
+   Hover Effects
+-------------------------- */
 .photo-card:hover {
   transform: translateY(-8px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -97,14 +115,18 @@ h2 {
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
-/* Responsive */
+/* -------------------------
+   Responsive
+-------------------------- */
 @media (max-width: 768px) {
   .photo-gallery {
     gap: 0.8rem;
   }
+
   .photo-card {
     width: 150px;
   }
+
   .photo-card img {
     height: 180px;
   }
