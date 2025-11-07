@@ -12,12 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site-header");
   const body = document.body;
 
-  // Detect homepage (adjust if your routing differs)
+  // ----------------------------------------------------
+  // Detect homepage (GitHub Pages & local environments)
+  // ----------------------------------------------------
+  const path = window.location.pathname;
   const isHomePage =
-    window.location.pathname.endsWith("index.html") ||
-    window.location.pathname === "/" ||
-    window.location.pathname === "/TrustyPaws/" ||
-    window.location.pathname.includes("home"); // safety for local testing
+    path === "/" ||
+    path === "/DIGA3009A/" || // ✅ GitHub Pages main URL
+    path.endsWith("index.html");
 
   // ------------------------
   // Mobile menu toggle
@@ -157,6 +159,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Event listeners (single set)
   // ------------------------
   if (isHomePage) {
+    // Run immediately to set correct layout on first load
+    updateActiveLink();
+    handleNavTransform();
+
     window.addEventListener("scroll", () => {
       updateActiveLink();
       handleNavTransform();
@@ -176,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Run once on load to initialize state
+    // Run again once full page loads
     window.addEventListener("load", () => {
       updateActiveLink();
       handleNavTransform();
