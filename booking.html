@@ -3,26 +3,78 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Booking Page</title>
-    <link rel="stylesheet" href="css/booking.css" />
+    <title>Trusty Paws — Booking</title>
+    <meta
+      name="description"
+      content="Book your Trusty Paws pet sitting or dog walking session."
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon2.png" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="base.css" />
     <link rel="stylesheet" href="css/navbar.css" />
-    <!-- Flatpickr for modern date selection -->
+    <link rel="stylesheet" href="css/booking.css" />
+
+    <!-- Flatpickr for date selection -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <!-- JS -->
+    <script src="javascript/navbar.js" defer></script>
+    <script src="javascript/booking.js" defer></script>
   </head>
+
   <body>
-    <header class="top-header">
-      <div class="top-inner">
-        <div class="logo-left">🏠🐾</div>
-        <h1 class="page-title">Booking Page</h1>
-        <div class="spacer"></div>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Trusty Paws homepage">
+          <img class="logo" src="images/logo_icon.png" alt="Trusty Paws logo" />
+          <span class="brand-text">Trusty Paws</span>
+        </a>
+
+        <!-- Mobile button (hamburger) -->
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Open menu"
+        >
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+
+        <!-- Navigation -->
+        <nav
+          id="primary-nav"
+          class="primary-nav"
+          role="navigation"
+          aria-label="Primary navigation"
+        >
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="about.html" class="active no-scroll">About Me</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
 
-    <main class="container">
+    <main class="booking-container">
       <!-- Progress / Step indicator -->
       <div class="progress-wrap">
         <div class="progress-bar">
@@ -110,18 +162,12 @@
               </div>
             </div>
 
-            <!-- Pet Details (Wag-style) -->
+            <!-- Pet Details -->
             <div class="field pet-field">
               <label>Pet Details</label>
 
-              <!-- Clickable “select” -->
-              <div id="petDropdownTrigger" class="pet-select-input">
-                <span id="petSummaryText">Select pets</span>
-                <span class="arrow">▼</span>
-              </div>
-
-              <!-- Dropdown panel -->
-              <div id="petDropdown" class="pet-dropdown hidden">
+              <!-- Horizontal layout for pets -->
+              <div class="pet-row-container">
                 <div class="pet-row" data-type="Dog">
                   <span class="pet-label">🐶 Dogs</span>
                   <div class="counter">
@@ -148,36 +194,26 @@
                     <button type="button" class="circle-btn plus">+</button>
                   </div>
                 </div>
+              </div>
 
-                <div id="otherPetField" class="hidden">
-                  <input
-                    type="text"
-                    id="otherPet"
-                    placeholder="What kind of animal?"
-                  />
-                </div>
+              <!-- Hidden text box for "Other" -->
+              <div id="otherPetField" class="hidden">
+                <input
+                  type="text"
+                  id="otherPet"
+                  placeholder="What kind of animal?"
+                />
               </div>
             </div>
 
-            <div class="two-col">
-              <div class="field">
-                <label for="special">Special Instructions</label>
-                <textarea
-                  id="special"
-                  name="special"
-                  rows="3"
-                  placeholder="Feeding, meds, etc."
-                ></textarea>
-              </div>
-              <div class="field">
-                <label for="notes">Additional Notes</label>
-                <textarea
-                  id="notes"
-                  name="notes"
-                  rows="3"
-                  placeholder="Any other notes"
-                ></textarea>
-              </div>
+            <div class="field">
+              <label for="notes">Additional Notes</label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows="3"
+                placeholder="Any other notes"
+              ></textarea>
             </div>
           </form>
 
@@ -286,6 +322,20 @@
       </div>
     </main>
 
-    <script src="javascript/booking.js"></script>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>&copy; <span id="year"></span> Trusty Paws. All rights reserved.</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="javascript/paw_trail.js"></script>
+    <script src="javascript/contact_email.js" defer></script>
   </body>
 </html>

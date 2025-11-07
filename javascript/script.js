@@ -12,30 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // NAV TOGGLE (adds/removes class only)
-  // const navToggle = document.querySelector('.nav-toggle');
-  // const primaryNav = document.getElementById('primary-nav');
-
-  // if (navToggle && primaryNav) {
-  //   navToggle.addEventListener('click', () => {
-  //     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-  //     navToggle.setAttribute('aria-expanded', String(!expanded));
-  //     navToggle.setAttribute('aria-label', expanded ? 'Open menu' : 'Close menu');
-  //     primaryNav.classList.toggle('open');
-  //   });
-
-  //   // Close mobile nav when a link is clicked
-  //   primaryNav.querySelectorAll('a').forEach(a => {
-  //     a.addEventListener('click', () => {
-  //       if (primaryNav.classList.contains('open')) {
-  //         primaryNav.classList.remove('open');
-  //         navToggle.setAttribute('aria-expanded', 'false');
-  //         navToggle.setAttribute('aria-label', 'Open menu');
-  //       }
-  //     });
-  //   });
-  // }
-
   /* -----------------------
      Reviews carousel (simple)
      ----------------------- */
@@ -114,26 +90,53 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeTimer = setTimeout(() => renderReviews(currentReviewIndex), 150);
   });
 
-  /* -----------------------
-     Pet facts (placeholder)
-     ----------------------- */
-  const facts = [
-    "Dogs' noses are wet to help absorb scent chemicals.",
-    "A dog's sense of smell is up to 100,000 times more sensitive than ours.",
-    "Cats can make over 100 different vocal sounds.",
-    "Puppies are born blind and deaf for the first couple of weeks.",
-    "Dogs have unique nose prints just like human fingerprints."
-  ];
+/* -----------------------
+   Pet facts (live APIs)
+   ----------------------- */
 
-  const petFactEl = document.getElementById('pet-fact');
-  const newFactBtn = document.getElementById('new-fact');
+const dogFactEl = document.getElementById('dog-fact');
+const catFactEl = document.getElementById('cat-fact');
+const newDogBtn = document.getElementById('new-dog-fact');
+const newCatBtn = document.getElementById('new-cat-fact');
 
-  function showRandomFact(){
-    if (!petFactEl) return;
-    const idx = Math.floor(Math.random() * facts.length);
-    petFactEl.textContent = facts[idx];
+// Fetch functions
+async function fetchDogFact() {
+  try {
+    const res = await fetch('https://dogapi.dog/api/v2/facts');
+    const data = await res.json();
+    dogFactEl.style.opacity = 0;
+    setTimeout(() => {
+      dogFactEl.textContent = ` ${data.data[0].attributes.body}`;
+      dogFactEl.style.opacity = 1;
+    }, 150);
+  } catch {
+    dogFactEl.textContent = "Couldn't fetch a dog fact right now 🐾";
   }
-  if (newFactBtn) newFactBtn.addEventListener('click', showRandomFact);
+}
+
+async function fetchCatFact() {
+  try {
+    const res = await fetch('https://catfact.ninja/fact');
+    const data = await res.json();
+    catFactEl.style.opacity = 0;
+    setTimeout(() => {
+      catFactEl.textContent = ` ${data.fact}`;
+      catFactEl.style.opacity = 1;
+    }, 150);
+  } catch {
+    catFactEl.textContent = "Couldn't fetch a cat fact right now 🐾";
+  }
+}
+
+// Load on page load
+fetchDogFact();
+fetchCatFact();
+
+// Buttons
+if (newDogBtn) newDogBtn.addEventListener('click', fetchDogFact);
+if (newCatBtn) newCatBtn.addEventListener('click', fetchCatFact);
+
+
 
 
   /* -----------------------
@@ -167,6 +170,9 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     answer.style.display = open ? 'none' : 'block';
   });
 });
+
+
+
 
 
 });

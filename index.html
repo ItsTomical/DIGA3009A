@@ -296,17 +296,73 @@
       <section class="pet-facts">
         <div class="container">
           <h2>Pet facts</h2>
-          <p id="pet-fact" class="pet-fact-text">
-            Did you know? A dog’s nose print is unique — like a human
-            fingerprint.
-          </p>
-          <div class="fact-controls">
-            <button id="new-fact" class="btn small">New fact</button>
-            <small class="hint"
-              >Fact source placeholder — can be connected to a pet-facts API
-              later.</small
-            >
+
+          <!-- Dog Fact -->
+          <div class="fact-card">
+            <h3>🐶 Dog Fact</h3>
+            <p id="dog-fact" class="pet-fact-text">
+              Fetching a fun dog fact...
+            </p>
+            <button id="new-dog-fact" class="btn small">New Dog Fact</button>
           </div>
+
+          <!-- Cat Fact -->
+          <div class="fact-card">
+            <h3>🐱 Cat Fact</h3>
+            <p id="cat-fact" class="pet-fact-text">
+              Fetching a fun cat fact...
+            </p>
+            <button id="new-cat-fact" class="btn small">New Cat Fact</button>
+          </div>
+
+          <!-- Vet Tips from Instagram -->
+          <div class="fact-card">
+            <h3>
+              🩺 Vet Tips from
+              <a
+                href="https://www.instagram.com/amirthevettips/"
+                target="_blank"
+                rel="noopener"
+              >
+                @amirthevettips
+              </a>
+            </h3>
+
+            <div class="vet-feed">
+              <!-- Replace the src below with your SnapWidget embed code -->
+              <iframe
+                src="https://snapwidget.com/embed/123456"
+                class="snapwidget-widget"
+                allowtransparency="true"
+                frameborder="0"
+                scrolling="no"
+                style="
+                  border: none;
+                  overflow: hidden;
+                  width: 100%;
+                  height: 500px;
+                "
+              >
+              </iframe>
+            </div>
+          </div>
+
+          <small class="hint">
+            Facts sourced from
+            <a href="https://catfact.ninja" target="_blank" rel="noopener"
+              >CatFact</a
+            >
+            and
+            <a href="https://dogapi.dog" target="_blank" rel="noopener"
+              >Dog API</a
+            >. Vet tips powered by
+            <a
+              href="https://developers.facebook.com/docs/instagram/oembed/"
+              target="_blank"
+              rel="noopener"
+              >Instagram oEmbed API</a
+            >.
+          </small>
         </div>
       </section>
 
@@ -356,7 +412,7 @@
 
           <div class="contact-box">
             <h3>Contact</h3>
-            <form class="contact-form" novalidate>
+            <form class="contact-form" id="contact-form" novalidate>
               <label>Name <span class="req">*</span></label>
               <input type="text" name="name" required />
 
@@ -373,16 +429,33 @@
 
         <div class="contact-icons">
           <div>
-            <img src="images/phone_icon.png" alt="Phone icon" /> Contact Number
-            - 082 928 4846
+            <img src="images/phone_icon.png" alt="Phone icon" />
+            <a href="tel:0829284846">082 928 4846</a>
           </div>
+
           <div>
-            <img src="images/internet_icon.png" alt="Website icon" /> Social
-            Links -
+            <img src="images/internet_icon.png" alt="Social icon" />
+            <span>Social Links:</span>
+            <a
+              href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME"
+              target="_blank"
+              rel="noopener"
+              >Instagram</a
+            >
+            |
+            <a
+              href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
           </div>
+
           <div>
-            <img src="images/email_icon.png" alt="Email icon" /> Email -
-            thomas.m.yardley@gmail.com
+            <img src="images/email_icon.png" alt="Email icon" />
+            <a href="mailto:thomas.m.yardley@gmail.com"
+              >thomas.m.yardley@gmail.com</a
+            >
           </div>
         </div>
       </section>
@@ -403,5 +476,7 @@
 
     <script src="javascript/paw_trail.js"></script>
     <script src="javascript/background.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="javascript/contact_email.js" defer></script>
   </body>
 </html>
