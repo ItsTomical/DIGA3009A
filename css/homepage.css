@@ -389,7 +389,7 @@ main > section::after {
 .contact-icons {
   display: flex;
   justify-content: center;
-  gap: 10rem;
+  gap: 6rem;
   font-size: 0.95rem;
   color: var(--muted);
   padding-top: 1rem;
@@ -463,4 +463,28 @@ main > section::after {
   :root { --container-pad: 2rem; }
   .hero-copy h1 { font-size: 2.6rem; }
   .reviews-list li { min-width: 320px; }
+}
+
+/* ============================
+   CONTACT ICONS – MOBILE FIX
+   ============================ */
+@media (max-width: 720px) {
+  .contact-icons {
+    flex-direction: column;        /* stack vertically */
+    align-items: flex-start;       /* left-align icons */
+    gap: 1rem;                     /* reasonable spacing */
+    padding: 1rem;                 /* breathing room */
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .contact-icons div {
+    width: 100%;                   /* prevent overflow */
+    justify-content: flex-start;
+  }
+
+  .contact-icons img {
+    width: 20px;
+    height: 20px;
+  }
 }
