@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dailyNotes = document.getElementById("dailyNotes");
   const feeding = document.getElementById("feeding");
   const tasks = document.getElementById("tasks");
-  const petPhoto = document.getElementById("petPhoto");
   const security = document.getElementById("security");
   const alarms = document.getElementById("alarms");
 
@@ -150,7 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <div><strong>Feeding:</strong> ${feeding.value || "—"}</div>
       <div><strong>Tasks:</strong> ${tasks.value || "—"}</div>
       <div><strong>Security:</strong> ${sec} &nbsp; <strong>Alarms:</strong> ${alm}</div>
-      <div><strong>Pet photo uploaded:</strong> ${uploaded}</div>
     `;
 
     pricingInfo.innerHTML = `

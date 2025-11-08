@@ -32,13 +32,28 @@ main > section::after {
 
 /* Hero copy block (glass background) */
 .hero-copy {
+  position: relative;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(8px);
   border-radius: 16px;
   padding: 1.5rem 2rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 87, 34, 0.25); /* faint accent border */
+  box-shadow:
+    0 -2px 8px rgba(255, 87, 34, 0.15),  /* subtle top glow */
+    0 4px 12px rgba(255, 87, 34, 0.25),  /* bottom accent glow */
+    0 0 18px rgba(255, 87, 34, 0.12);    /* overall soft spread */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
   z-index: 2;
+}
+
+/* Hover boost (optional for interactivity) */
+.hero-copy:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 -3px 10px rgba(255, 87, 34, 0.18),
+    0 6px 18px rgba(255, 87, 34, 0.3),
+    0 0 25px rgba(255, 87, 34, 0.18);
 }
 
 .hero-copy h1 {
@@ -396,6 +411,26 @@ main > section::after {
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 87, 34, 0.25); /* faint accent border */
+  box-shadow:
+    0 -2px 8px rgba(255, 87, 34, 0.15),  /* subtle top glow */
+    0 4px 12px rgba(255, 87, 34, 0.25),  /* bottom accent glow */
+    0 0 18px rgba(255, 87, 34, 0.12),    /* overall soft spread */
+    0 6px 18px rgba(0, 0, 0, 0.1);       /* shadow */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-contact-inner:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 -3px 10px rgba(255, 87, 34, 0.18),
+    0 6px 18px rgba(255, 87, 34, 0.3),
+    0 0 25px rgba(255, 87, 34, 0.18),
+    0 6px 20px rgba(0, 0, 0, 0.12); /* subtle depth on hover */
 }
 
 .faq-box,
@@ -504,16 +539,24 @@ main > section::after {
   gap: 0.5rem;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 87, 34, 0.25);
   border-radius: 12px;
   padding: 0.6rem 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 -2px 8px rgba(255, 87, 34, 0.15),
+    0 4px 12px rgba(255, 87, 34, 0.25),
+    0 0 18px rgba(255, 87, 34, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact-icons div:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 -3px 10px rgba(255, 87, 34, 0.18),
+    0 6px 18px rgba(255, 87, 34, 0.3),
+    0 0 25px rgba(255, 87, 34, 0.18),
+    0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .contact-icons img {

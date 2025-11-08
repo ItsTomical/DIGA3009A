@@ -81,12 +81,27 @@ strong {
 .photo-card {
   background: #fff;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow:
+    0 -2px 8px rgba(255, 87, 34, 0.15),  /* subtle top glow */
+    0 4px 12px rgba(255, 87, 34, 0.25),  /* bottom accent glow */
+    0 0 18px rgba(255, 87, 34, 0.12),    /* soft spread glow */
+    var(--shadow);                       /* keeps your existing site shadow */
   overflow: hidden;
   width: 180px;
   cursor: pointer;
+  border: 1px solid rgba(255, 87, 34, 0.25); /* faint accent border */
   transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
 }
+
+.photo-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow:
+    0 -3px 10px rgba(255, 87, 34, 0.18),
+    0 6px 18px rgba(255, 87, 34, 0.3),
+    0 0 25px rgba(255, 87, 34, 0.18),
+    0 8px 20px rgba(0, 0, 0, 0.15); /* keeps original hover depth */
+}
+
 
 .photo-card img {
   width: 100%;
@@ -115,6 +130,62 @@ strong {
 .photo-gallery.js-enabled .photo-card {
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
+
+/* -------------------------
+   Info Card Styling (matches .hero-copy)
+-------------------------- */
+.info-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  border: 1px solid rgba(255, 87, 34, 0.25); /* faint accent border */
+  box-shadow:
+    0 -2px 8px rgba(255, 87, 34, 0.15),
+    0 4px 12px rgba(255, 87, 34, 0.25),
+    0 0 18px rgba(255, 87, 34, 0.12);
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: left;
+  z-index: 2;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Optional hover for .info-card */
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 -3px 10px rgba(255, 87, 34, 0.18),
+    0 6px 18px rgba(255, 87, 34, 0.3),
+    0 0 25px rgba(255, 87, 34, 0.18);
+}
+
+.info-card h2 {
+  text-align: center;
+  color: var(--brand-blue);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.info-card h3 {
+  color: var(--brand-blue);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-card h4 {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.info-card p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
 
 /* -------------------------
    Responsive

@@ -87,13 +87,28 @@ body {
    CARD STYLES
 ========================================== */
 .card {
+  position: relative;
   background: #fff;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
   padding: 1.25rem;
   margin-bottom: 1.25rem;
-  border: 1px solid #eee;
+  border: 1px solid rgba(255, 87, 34, 0.25); /* faint accent border */
+  box-shadow:
+    0 -2px 8px rgba(255, 87, 34, 0.15),  /* subtle top glow */
+    0 4px 12px rgba(255, 87, 34, 0.25),  /* bottom accent glow */
+    0 0 18px rgba(255, 87, 34, 0.12);    /* overall soft spread */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+/* Optional hover boost */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 -3px 10px rgba(255, 87, 34, 0.18),
+    0 6px 18px rgba(255, 87, 34, 0.3),
+    0 0 25px rgba(255, 87, 34, 0.18);
+}
+
 
 .card-title {
   margin: 0 0 0.75rem;
@@ -285,26 +300,6 @@ textarea {
   margin-bottom: 1.5rem;
 }
 
-
-
-
-/* ==========================================
-   UPLOAD BOX
-========================================== */
-.upload-box {
-  border: 2px dashed #ccc;
-  border-radius: 10px;
-  text-align: center;
-  padding: 1.2rem;
-  background: #fafafa;
-  color: var(--muted);
-  margin-top: 0.75rem;
-  transition: background 0.25s ease;
-}
-.upload-box:hover {
-  background: rgba(76, 175, 80, 0.05);
-}
-
 /* ==========================================
    BUTTONS
 ========================================== */
@@ -354,6 +349,15 @@ textarea {
 /* ==========================================
    STEP 2 DETAILS
 ========================================== */
+.form-instruction {
+  text-align: center;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+
 .card.checklist details {
   border: 1px solid #e0e0e0;
   border-radius: 10px;
