@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const path = window.location.pathname;
   const isHomePage =
     path === "/" ||
-    path === "/DIGA3009A/" || // ✅ GitHub Pages main URL
+    path === "/DIGA3009A/" ||
     path.endsWith("index.html");
 
   // ------------------------

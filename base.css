@@ -103,7 +103,7 @@ h1, h2, h3, h4,
   * { transition: none !important; animation: none !important; }
 }
 
-/* Fix mobile zoom-out issue */
+/* Fixed mobile zoom-out issue */
 @media (max-width: 720px) {
   .container {
     max-width: 100%;

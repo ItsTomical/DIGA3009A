@@ -1,10 +1,4 @@
-/* script.js
-   - Pure behaviour file (no inline styles)
-   - Nav toggle
-   - Reviews carousel
-   - Booking form validation + success/error via classes
-   - Pet facts local placeholder (easily replaceable with API)
-   - GSAP animations (uses classes / selectors only)
+/* homepage.js
 */
 
 document.addEventListener('DOMContentLoaded', () => {

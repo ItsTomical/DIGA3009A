@@ -1,6 +1,5 @@
 /* ==========================================
    Trusty Paws — About Page
-   Perfect font match to Homepage
    ========================================== */
 
 html {
@@ -9,7 +8,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Body text = Lora (same as homepage) */
 body {
   font-family: "Lora", serif;
   font-weight: 400;
@@ -19,7 +17,6 @@ body {
   margin: 0;
 }
 
-/* Headings = Poppins (same as homepage) */
 h1, h2, h3, h4 {
   font-family: "Poppins", system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
   font-weight: 700;
@@ -27,7 +24,6 @@ h1, h2, h3, h4 {
   margin: 0;
 }
 
-/* Strong text = heavier (matches homepage emphasis) */
 strong {
   font-weight: 600;
   color: var(--text);

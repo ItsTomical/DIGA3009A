@@ -390,7 +390,7 @@ body:not(.nav-shifted) .site-header {
     left: 0;
     right: 0;
     padding-top: 0.4rem;
-    padding-right: 0.75rem; /* ✅ adds breathing room on the right */
+    padding-right: 0.75rem; 
     background: rgba(255, 255, 255, 0.95);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -402,11 +402,11 @@ body:not(.nav-shifted) .site-header {
   }
 
   .brand {
-    margin-left: 0.5rem; /* slight left offset for visual balance */
+    margin-left: 0.5rem;
   }
 
   .nav-toggle {
-    margin-right: 0.5rem; /* ✅ moves hamburger left */
+    margin-right: 0.5rem;
   }
 
   .hamburger,

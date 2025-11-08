@@ -3,7 +3,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize EmailJS
-  emailjs.init("pDeF5q_6RjbGgwM8o"); // e.g. public_AbC123XYZ
+  emailjs.init("pDeF5q_6RjbGgwM8o");
 
   const contactForm = document.getElementById("contact-form");
 

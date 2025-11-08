@@ -32,8 +32,8 @@
     const left = Math.random() * (100 - padding * 2) + padding;
     const top = Math.random() * (100 - padding * 2) + padding;
 
-    const duration = Math.random() * 10 + 8; // 8–18s
-    const delay = Math.random() * 10; // 0–10s
+    const duration = Math.random() * 10 + 8; 
+    const delay = Math.random() * 10; 
     const reverse = Math.random() > 0.5;
 
     el.style.left = `${left}%`;
