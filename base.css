@@ -167,3 +167,33 @@ h1, h2, h3, h4,
   padding-right: 1rem;
   margin: 0;
 }
+
+/* ------------------------------------------
+   Footer Alignment Fix
+------------------------------------------- */
+.site-footer {
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+body.nav-shifted .site-footer {
+  margin-left: 120px;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.footer-nav ul {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer-bottom {
+  margin-left: 0;
+  padding-left: 0;
+}
+
