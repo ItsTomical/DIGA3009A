@@ -27,10 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const careInfo = document.getElementById("careInfo");
   const behaviour = document.getElementById("behaviour");
   const dailyNotes = document.getElementById("dailyNotes");
-  const feeding = document.getElementById("feeding");
-  const tasks = document.getElementById("tasks");
-  const security = document.getElementById("security");
+  const overnightInfo = document.getElementById("overnightInfo");
+  
   const alarms = document.getElementById("alarms");
+  const complex = document.getElementById("complex");
+  const freeStanding = document.getElementById("free-standing");
+
+
 
   // Step 3 summary elements
   const summaryBox = document.getElementById("summaryBox");
@@ -107,14 +110,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Step 3 Summary ---
-  function buildSummary() {
+function buildSummary() {
+  try {
     const service = (serviceRadios.find(r => r.checked) || {}).value || "—";
     const name = nameInput.value || "—";
     const email = emailInput.value || "—";
     const phone = phoneInput.value || "—";
     const date = document.getElementById("date").value || "—";
-    const notes = document.getElementById("notes").value || "—";
+    const notes = document.getElementById("notes")?.value || "—";
 
+    // Build pet summary
     let petsSummary = [];
     document.querySelectorAll(".pet-row").forEach(row => {
       const type = row.dataset.type;
@@ -130,11 +135,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const pet = petsSummary.length ? petsSummary.join(", ") : "—";
 
-    const uploaded = petPhoto?.files?.length ? "Yes" : "No";
-    const sec = security.checked ? "Yes" : "No";
-    const alm = alarms.checked ? "Yes" : "No";
+    
 
-    summaryBox.innerHTML = `
+    const alm = alarms?.checked ? "Yes" : "No";
+    const complexState = complex?.checked ? "Yes" : "No";
+    const freeStandingState = freeStanding?.checked ? "Yes" : "No";
+
+
+
+    if (summaryBox) {
+      summaryBox.innerHTML = `
       <div><strong>Service:</strong> ${service}</div>
       <div><strong>Name:</strong> ${name}</div>
       <div><strong>Email:</strong> ${email}</div>
@@ -143,19 +153,29 @@ document.addEventListener("DOMContentLoaded", () => {
       <div><strong>Pets:</strong> ${pet}</div>
       <div><strong>Additional Notes:</strong> ${notes}</div>
       <hr />
-      <div><strong>Care Info:</strong> ${careInfo.value || "—"}</div>
-      <div><strong>Behaviour:</strong> ${behaviour.value || "—"}</div>
-      <div><strong>Daily Notes:</strong> ${dailyNotes.value || "—"}</div>
-      <div><strong>Feeding:</strong> ${feeding.value || "—"}</div>
-      <div><strong>Tasks:</strong> ${tasks.value || "—"}</div>
-      <div><strong>Security:</strong> ${sec} &nbsp; <strong>Alarms:</strong> ${alm}</div>
-    `;
+      <div><strong>Care Info:</strong> ${careInfo?.value || "—"}</div>
+      <div><strong>Behaviour:</strong> ${behaviour?.value || "—"}</div>
+      <div><strong>Daily Notes:</strong> ${dailyNotes?.value || "—"}</div>
+      <div><strong>Overnight Info:</strong> ${overnightInfo?.value || "—"}</div>
+      <div><strong>Alarms:</strong> ${alm} &nbsp;
+       <strong>Complex:</strong> ${complexState} &nbsp;
+       <strong>Free-standing:</strong> ${freeStandingState}</div>
+`;
 
-    pricingInfo.innerHTML = `
-      <p>Service fee: $XX</p>
-      <p>Additional notes: ${notes}</p>
-    `;
+
+    }
+
+    if (pricingInfo) {
+      pricingInfo.innerHTML = `
+        <p>Service fee: <em>Final rate confirmed after meet and greet</em></p>
+        <p>Additional notes: ${notes}</p>
+      `;
+    }
+  } catch (err) {
+    console.error("⚠️ buildSummary failed:", err);
   }
+}
+
 
   // --- Confirm Booking (Send Email via EmailJS) ---
   const bookingConfirmed = document.getElementById("bookingConfirmed");
@@ -183,22 +203,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const pet = petsSummary.length ? petsSummary.join(", ") : "—";
 
-    const emailData = {
-      service,
-      name,
-      email,
-      phone,
-      date,
-      pets: pet,
-      notes,
-      care_info: careInfo.value || "—",
-      behaviour: behaviour.value || "—",
-      daily_notes: dailyNotes.value || "—",
-      feeding: feeding.value || "—",
-      tasks: tasks.value || "—",
-      security: security.checked ? "Yes" : "No",
-      alarms: alarms.checked ? "Yes" : "No",
-    };
+
+const almChecked = document.getElementById("alarms")?.checked ? "Yes" : "No";
+const complexChecked = document.getElementById("complex")?.checked ? "Yes" : "No";
+const freeStandingChecked = document.getElementById("free-standing")?.checked ? "Yes" : "No";
+
+const emailData = {
+  service,
+  name,
+  email,
+  phone,
+  date,
+  pets: pet,
+  notes,
+  care_info: careInfo.value || "—",
+  behaviour: behaviour.value || "—",
+  daily_notes: dailyNotes.value || "—",
+  overnight_info: overnightInfo.value || "—",
+  alarms: almChecked,
+  complex: complexChecked,
+  free_standing: freeStandingChecked
+};
 
     // Send booking email
     emailjs.send("service_tvt2d89", "template_yqhts3q", emailData)
