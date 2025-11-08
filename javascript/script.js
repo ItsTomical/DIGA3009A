@@ -180,21 +180,32 @@ if (!reduceMotion && window.gsap && window.gsap.utils) {
 }
 
 
-  // FAQ accordion toggle
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const answer = btn.nextElementSibling;
-    const open = answer.style.display === 'block';
-    document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-    answer.style.display = open ? 'none' : 'block';
+    // FAQ accordion toggle
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const open = answer.style.display === 'block';
+      document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+      answer.style.display = open ? 'none' : 'block';
+    });
   });
+
+
+  /* -----------------------
+     Smooth Scroll Fix for External Hash Links
+     ----------------------- */
+  if (window.location.hash) {
+    const targetId = window.location.hash.substring(1);
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      setTimeout(() => {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    }
+  }
+
 });
 
-
-
-
-
-});
 
 
 

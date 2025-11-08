@@ -187,10 +187,20 @@ body.nav-shifted .site-footer {
   justify-content: space-between;
 }
 
+/* Desktop: vertical list */
 .footer-nav ul {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  align-items: flex-start;
+}
+
+/* Mobile: horizontal layout */
+@media (max-width: 700px) {
+  .footer-nav ul {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .footer-bottom {
