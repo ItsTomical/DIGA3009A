@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
      Reviews carousel (simple)
      ----------------------- */
   const reviews = [
-    { name: "Maya R.", text: "Fantastic service! My spaniel looks forward to walks and I get great photo updates.", rating: 5 },
-    { name: "Lindiwe K.", text: "Very reliable. Booked overnight stays twice and felt confident leaving my pets at home.", rating: 5 },
-    { name: "Peter S.", text: "Great communicator and very punctual. My cat even warmed up to her quickly!", rating: 4 },
-    { name: "Sibongile M.", text: "Flexible and trustworthy — highly recommend for busy professionals.", rating: 5 }
+    { name: "Maya R.", text: "Thomas is amazing with my spaniel Rita – she gets so excited when he arrives for walks! I always get fun photo updates and can tell she’s in great hands.", rating: 5 },
+    { name: "Lindiwe K.", text: "I’ve booked Thomas for overnight stays a few times now, and every time my pets are calm, happy, and well cared for. It’s such a relief knowing they’re safe with him.", rating: 5 },
+    { name: "Peter S.", text: "Very reliable and easy to communicate with. My cat, who’s usually shy, warmed up to Thomas surprisingly fast – that says it all!", rating: 4 },
+    { name: "Sibongile M.", text: "Professional, kind, and trustworthy. Thomas really goes the extra mile to fit my busy schedule. Highly recommend Trusty Paws!", rating: 5 }
   ];
 
   const reviewsList = document.getElementById('reviews-list');

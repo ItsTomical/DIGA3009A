@@ -7,10 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!gallery || cards.length === 0) return;
 
-  // Enable JS styling hook
   gallery.classList.add("js-enabled");
 
-  // Hover interactions
+  // Hover effects
   cards.forEach((card, index) => {
     card.addEventListener("mouseenter", () => {
       cards.forEach((c, i) => {
@@ -27,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-
     card.addEventListener("mouseleave", () => {
       cards.forEach((c) => {
         c.style.transform = "";
@@ -36,62 +34,50 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-});
 
-
-// -----------------------------
-// GSAP Animations — Soft fade + visibility hint
-// -----------------------------
-window.addEventListener("load", () => {
+  // -----------------------------
+  // GSAP Animations
+  // -----------------------------
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
 
-    // About text fade in
-    gsap.from(".about-text", {
-      scrollTrigger: {
-        trigger: ".about-text",
-        start: "top 85%",
-        toggleActions: "play none none reverse",
-      },
-      opacity: 0,
-      y: 25,
-      duration: 0.6,
-      ease: "power2.out",
-    });
+    // Make sure they're visible from the start (hint of next cards)
+    gsap.set(".photo-card", { opacity: 0.3, scale: 0.95 });
 
-    // Photo cards visible but softly faded (hints of right-side)
-    gsap.set(".photo-card", { opacity: 0.25, scale: 0.95 });
-
-    // Animate left to right on scroll
+    // Animate cards left-to-right on scroll
     gsap.to(".photo-card", {
       scrollTrigger: {
         trigger: ".photo-gallery",
         start: "top 90%",
         toggleActions: "play none none reverse",
+        once: true, // only animate once per scroll
       },
       opacity: 1,
       scale: 1,
       y: 0,
       stagger: {
-        each: 0.12,
-        from: "start", // left → right
+        each: 0.1,
+        from: "start",
       },
-      duration: 0.6,
+      duration: 0.5,
       ease: "power2.out",
     });
 
-    // Floating idle motion
+    // Idle floating motion
     gsap.utils.toArray(".photo-card").forEach((card, i) => {
       gsap.to(card, {
         scrollTrigger: { trigger: card, start: "top 95%" },
         y: Math.sin(i) * 6,
         repeat: -1,
         yoyo: true,
-        duration: 2.8 + i * 0.25,
+        duration: 3 + i * 0.2,
         ease: "sine.inOut",
       });
     });
 
-    ScrollTrigger.refresh();
+    // refresh after images load to fix ScrollTrigger positions
+    window.addEventListener("load", () => {
+      ScrollTrigger.refresh();
+    });
   }
 });
