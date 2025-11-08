@@ -320,6 +320,7 @@ main > section::after {
   display: flex;
   gap: 0.75rem;
   align-items: center;
+  justify-content: center;
 }
 
 .reviews-list {
@@ -329,7 +330,9 @@ main > section::after {
   display: flex;
   gap: 1rem;
   overflow: hidden;
+  justify-content: center;
   width: 100%;
+  max-width: 900px;
 }
 
 .reviews-list li {
@@ -339,6 +342,11 @@ main > section::after {
   border-radius: 12px;
   padding: 1rem;
   box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.reviews-list li:hover {
+  transform: translateY(-3px);
 }
 
 .carousel-btn {
@@ -347,7 +355,58 @@ main > section::after {
   padding: 0.4rem 0.6rem;
   border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
+
+.carousel-btn:hover {
+  background: var(--brand-green-dark);
+}
+
+/* =========================================
+   Responsive Layout (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+  .reviews-wrap {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .reviews h2 {
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  .carousel-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 1.25rem;
+  }
+
+  .reviews-list {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    padding-bottom: 0.5rem;
+  }
+
+  .reviews-list li {
+    flex: 0 0 85%;
+    min-width: 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    margin: 0 auto;
+  }
+
+  /* Optional: hide horizontal scrollbar */
+  /* .reviews-list::-webkit-scrollbar {
+    display: none;
+  } */
+}
+
 
 
 /* =========================================================
@@ -383,8 +442,14 @@ main > section::after {
   transition: opacity 0.3s ease;
 }
 
+
+/* <!--
+  Vet Tips section temporarily removed.
+  Planned Instagram embed via oEmbed/SnapWidget,
+  but omitted for final submission due to time constraints
+--> */
 /* Vet Tips (Instagram Embed) */
-#vet-tips {
+/* #vet-tips {
   text-align: left;
 }
 
@@ -396,7 +461,7 @@ main > section::after {
   width: 100%;
   border-radius: 12px;
   box-shadow: var(--shadow);
-}
+} */
 
 
 /* =========================================================

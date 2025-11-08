@@ -382,18 +382,36 @@ body:not(.nav-shifted) .site-header {
 }
 
 /* --------------------------------------------
-   MOBILE NAVBAR ALIGNMENT FIX
--------------------------------------------- */
+   FINAL MOBILE NAVBAR SPACING FIX
+   -------------------------------------------- */
 @media (max-width: 780px) {
+  .site-header {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 0.4rem;
+    padding-right: 0.75rem; /* ✅ adds breathing room on the right */
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
   .header-inner {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .brand {
+    margin-left: 0.5rem; /* slight left offset for visual balance */
   }
 
   .nav-toggle {
-    margin-left: auto;
-    margin-right: 0;
+    margin-right: 0.5rem; /* ✅ moves hamburger left */
+  }
+
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    border-radius: 2px;
   }
 }
