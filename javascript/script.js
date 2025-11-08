@@ -140,26 +140,51 @@ if (newCatBtn) newCatBtn.addEventListener('click', fetchCatFact);
 
 
   /* -----------------------
-     GSAP animations (optional)
-     ----------------------- */
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduceMotion && window.gsap && window.gsap.utils) {
-    try {
-      gsap.from('.hero-copy', { opacity: 0, y: 18, duration: 0.7 });
-      gsap.from('.hero-media img', { opacity: 0, scale: 0.98, duration: 0.9, delay: 0.2 });
-      gsap.utils.toArray('.service-card').forEach((el, i) => {
-        gsap.from(el, { scrollTrigger: { trigger: '#services', start: 'top 80%' }, opacity: 0, y: 18, duration: 0.6, delay: i * 0.08 });
+   GSAP Animations (Timeline + ScrollTrigger)
+   ----------------------- */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!reduceMotion && window.gsap && window.gsap.utils) {
+  try {
+    // === TIMELINE ANIMATION ===
+    const heroTl = gsap.timeline();
+    heroTl
+      .from('.hero-copy', { opacity: 0, y: 18, duration: 0.7 })
+      .from('.hero-media img', { opacity: 0, scale: 0.95, duration: 0.9 }, '-=0.3');
+
+    // === SCROLLTRIGGER ANIMATIONS ===
+    gsap.utils.toArray('.service-card').forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 80%' },
+        opacity: 0,
+        y: 18,
+        duration: 0.6,
+        delay: i * 0.1,
       });
-      gsap.utils.toArray('.steps li').forEach((el, i) => {
-        gsap.from(el, { scrollTrigger: { trigger: '#how', start: 'top 85%' }, opacity: 0, y: 20, duration: 0.6, delay: i * 0.08 });
+    });
+
+    gsap.utils.toArray('.steps li').forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: '#how', start: 'top 85%' },
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: i * 0.08,
       });
-      gsap.from('.reviews-list li', { scrollTrigger: { trigger: '#reviews', start: 'top 88%' }, opacity: 0, y: 18, duration: 0.6 });
-    } catch (err) {
-      // fail gracefully if GSAP config not available
-      // eslint-disable-next-line no-console
-      console.warn('GSAP animation skipped:', err);
-    }
+    });
+
+    gsap.from('.reviews-list li', {
+      scrollTrigger: { trigger: '#reviews', start: 'top 90%' },
+      opacity: 0,
+      y: 18,
+      duration: 0.6,
+    });
+
+  } catch (err) {
+    console.warn('GSAP animation skipped:', err);
   }
+}
+
 
   // FAQ accordion toggle
 document.querySelectorAll('.faq-question').forEach(btn => {

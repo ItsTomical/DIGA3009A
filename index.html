@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/homepage.css" />
     <link rel="stylesheet" href="css/paw_trail.css" />
-    <link rel="stylesheet" href="css/stickers.css" />
     <link rel="stylesheet" href="css/background.css" />
+    <link rel="stylesheet" href="css/lightbox.css" />
 
     <!-- GSAP (animations) -->
     <script
@@ -34,18 +34,18 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"
       defer
     ></script>
-
-    <!-- JS -->
-    <script src="javascript/navbar.js"></script>
-    <script src="javascript/script.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/MotionPathPlugin.min.js"
+      defer
+    ></script>
   </head>
   <body>
     <!-- Floating stickers background -->
-    <!-- <div
+    <div
       class="background-stickers"
       id="backgroundStickers"
       aria-hidden="true"
-    ></div> -->
+    ></div>
     <header class="site-header" role="banner">
       <div class="container header-inner">
         <a class="brand" href="#" aria-label="Trusty Paws homepage">
@@ -85,7 +85,7 @@
       </div>
     </header>
 
-    <main id="main">
+    <main id="main" role="main">
       <section id="home" class="hero" aria-label="Intro">
         <div class="container hero-inner">
           <div class="hero-copy">
@@ -248,122 +248,127 @@
         </section>
 
         <section class="coverage-map">
-          <div class="container">
-            <h2>Coverage Map</h2>
-            <form class="coverage-form" onsubmit="return false;">
-              <label for="suburb">Enter your suburb</label>
-              <div class="input-group">
-                <input id="suburb" type="text" placeholder="e.g. Sandton" />
-                <button
-                  type="button"
-                  id="check-suburb"
-                  aria-label="Check coverage"
-                >
-                  &rarr;
-                </button>
-              </div>
-            </form>
+          <h2>Our Service Area</h2>
+          <div class="map-container">
+            <img
+              src="../images/map_zone.png"
+              alt="Coverage map showing Lone Hill as my based location"
+              data-lightbox
+            />
+          </div>
 
-            <div
-              id="map-placeholder"
-              class="map-placeholder"
-              aria-hidden="true"
-            >
-              <p>Map loading...</p>
+          <div class="coverage-info">
+            <h3>I Currently Cover:</h3>
+            <ul class="coverage-list">
+              <li>Beverley</li>
+              <li>Broadacres</li>
+              <li>Bryanston</li>
+              <li>Chartwell</li>
+              <li>Dainfern</li>
+              <li>Douglasdale</li>
+              <li>Fourways</li>
+              <li>Jukskei Park</li>
+              <li>Lone Hill</li>
+              <li>Magaliessig</li>
+              <li>Paulshof</li>
+            </ul>
+            <p class="outside-note">
+              Not in one of these areas? <a href="#contact">Contact us</a> and
+              we’ll see if we can help!
+            </p>
+          </div>
+        </section>
+
+        <section id="reviews" class="reviews">
+          <div class="container">
+            <h2>What clients say</h2>
+            <div class="reviews-wrap">
+              <button class="carousel-btn prev" aria-label="Previous review">
+                &larr;
+              </button>
+              <ul class="reviews-list" id="reviews-list" role="list">
+                <!-- JS will insert reviews here -->
+              </ul>
+              <button class="carousel-btn next" aria-label="Next review">
+                &rarr;
+              </button>
             </div>
           </div>
         </section>
-      </div>
 
-      <section id="reviews" class="reviews">
-        <div class="container">
-          <h2>What clients say</h2>
-          <div class="reviews-wrap">
-            <button class="carousel-btn prev" aria-label="Previous review">
-              &larr;
-            </button>
-            <ul class="reviews-list" id="reviews-list" role="list">
-              <!-- JS will insert reviews here -->
-            </ul>
-            <button class="carousel-btn next" aria-label="Next review">
-              &rarr;
-            </button>
-          </div>
-        </div>
-      </section>
+        <section class="pet-facts">
+          <div class="container">
+            <h2>Pet facts</h2>
 
-      <section class="pet-facts">
-        <div class="container">
-          <h2>Pet facts</h2>
+            <!-- Dog Fact -->
+            <div class="fact-card">
+              <h3>🐶 Dog Fact</h3>
+              <p id="dog-fact" class="pet-fact-text">
+                Fetching a fun dog fact...
+              </p>
+              <button id="new-dog-fact" class="btn small">New Dog Fact</button>
+            </div>
 
-          <!-- Dog Fact -->
-          <div class="fact-card">
-            <h3>🐶 Dog Fact</h3>
-            <p id="dog-fact" class="pet-fact-text">
-              Fetching a fun dog fact...
-            </p>
-            <button id="new-dog-fact" class="btn small">New Dog Fact</button>
-          </div>
+            <!-- Cat Fact -->
+            <div class="fact-card">
+              <h3>🐱 Cat Fact</h3>
+              <p id="cat-fact" class="pet-fact-text">
+                Fetching a fun cat fact...
+              </p>
+              <button id="new-cat-fact" class="btn small">New Cat Fact</button>
+            </div>
 
-          <!-- Cat Fact -->
-          <div class="fact-card">
-            <h3>🐱 Cat Fact</h3>
-            <p id="cat-fact" class="pet-fact-text">
-              Fetching a fun cat fact...
-            </p>
-            <button id="new-cat-fact" class="btn small">New Cat Fact</button>
-          </div>
+            <!-- Vet Tips from Instagram -->
+            <div class="fact-card">
+              <h3>
+                🩺 Vet Tips from
+                <a
+                  href="https://www.instagram.com/amirthevettips/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  @amirthevettips
+                </a>
+              </h3>
 
-          <!-- Vet Tips from Instagram -->
-          <div class="fact-card">
-            <h3>
-              🩺 Vet Tips from
+              <div class="vet-feed">
+                <!-- Replace the src below with your SnapWidget embed code -->
+                <iframe
+                  src="https://snapwidget.com/embed/123456"
+                  class="snapwidget-widget"
+                  allowtransparency="true"
+                  frameborder="0"
+                  scrolling="no"
+                  style="
+                    border: none;
+                    overflow: hidden;
+                    width: 100%;
+                    height: 500px;
+                  "
+                >
+                </iframe>
+              </div>
+            </div>
+
+            <small class="hint">
+              Facts sourced from
+              <a href="https://catfact.ninja" target="_blank" rel="noopener"
+                >CatFact</a
+              >
+              and
+              <a href="https://dogapi.dog" target="_blank" rel="noopener"
+                >Dog API</a
+              >. Vet tips powered by
               <a
-                href="https://www.instagram.com/amirthevettips/"
+                href="https://developers.facebook.com/docs/instagram/oembed/"
                 target="_blank"
                 rel="noopener"
-              >
-                @amirthevettips
-              </a>
-            </h3>
-
-            <div class="vet-feed">
-              <!-- Replace the src below with your SnapWidget embed code -->
-              <iframe
-                src="https://snapwidget.com/embed/123456"
-                class="snapwidget-widget"
-                allowtransparency="true"
-                frameborder="0"
-                scrolling="no"
-                style="
-                  border: none;
-                  overflow: hidden;
-                  width: 100%;
-                  height: 500px;
-                "
-              >
-              </iframe>
-            </div>
+                >Instagram oEmbed API</a
+              >.
+            </small>
           </div>
-
-          <small class="hint">
-            Facts sourced from
-            <a href="https://catfact.ninja" target="_blank" rel="noopener"
-              >CatFact</a
-            >
-            and
-            <a href="https://dogapi.dog" target="_blank" rel="noopener"
-              >Dog API</a
-            >. Vet tips powered by
-            <a
-              href="https://developers.facebook.com/docs/instagram/oembed/"
-              target="_blank"
-              rel="noopener"
-              >Instagram oEmbed API</a
-            >.
-          </small>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <section id="contact" class="faq-contact">
         <div class="container faq-contact-inner">
@@ -473,9 +478,23 @@
       </div>
     </footer>
 
-    <script src="javascript/paw_trail.js"></script>
-    <script src="javascript/background.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <!-- Javascript files -->
+    <script src="javascript/navbar.js" defer></script>
+    <script src="javascript/lightbox.js" defer></script>
+    <script src="javascript/script.js" defer></script>
+    <script src="javascript/paw_trail.js" defer></script>
+    <script src="javascript/background.js" defer></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
     <script src="javascript/contact_email.js" defer></script>
+
+    <!-- Hidden SVG path for motion stickers -->
+    <svg width="0" height="0" viewBox="0 0 100 100" style="position: absolute">
+      <path
+        id="floatPath"
+        d="M0,80 C30,20 70,20 100,80"
+        fill="none"
+        stroke="none"
+      />
+    </svg>
   </body>
 </html>

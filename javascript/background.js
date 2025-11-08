@@ -63,4 +63,56 @@
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(populate, 300);
   });
+
+
+// -----------------------------
+// GSAP MotionPath Stickers (SVG animation)
+// -----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof gsap === "undefined" || typeof MotionPathPlugin === "undefined") return;
+  gsap.registerPlugin(MotionPathPlugin);
+
+  const container = document.getElementById("backgroundStickers");
+  if (!container) return;
+
+  const motionStickers = [
+    "../images/background/dog_bone_background.png",
+    "../images/background/fish_background.png",
+    "../images/background/paw_background.png",
+  ];
+
+  motionStickers.forEach((src, i) => {
+    const el = document.createElement("img");
+    el.src = src;
+    el.alt = "";
+    el.classList.add("motion-sticker");
+    container.appendChild(el);
+
+    // Randomize size, scale and duration
+    const size = gsap.utils.random(48, 96);
+    el.style.width = `${size}px`;
+    el.style.height = "auto";
+    el.style.position = "absolute";
+    el.style.opacity = "0.2";
+    el.style.pointerEvents = "none";
+
+    // Animate along path
+    gsap.to(el, {
+      duration: gsap.utils.random(12, 20),
+      repeat: -1,
+      ease: "none",
+      motionPath: {
+        path: "#floatPath",
+        align: "#floatPath",
+        alignOrigin: [0.5, 0.5],
+        start: 0,
+        end: 1
+      },
+      scale: gsap.utils.random(0.6, 1.2),
+      yoyo: true,
+      delay: i * 2
+    });
+  });
+});
+
 })();

@@ -37,3 +37,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+if (window.gsap && window.ScrollTrigger) {
+  const aboutTl = gsap.timeline();
+  aboutTl.from(".about-text h2", { opacity: 0, y: 20, duration: 0.6 })
+          .from(".about-text p", { opacity: 0, y: 10, stagger: 0.2, duration: 0.6 })
+          .from(".photo-card", { opacity: 0, scale: 0.9, stagger: 0.15, duration: 0.8 });
+
+  gsap.utils.toArray(".photo-card").forEach((card, i) => {
+    gsap.to(card, {
+      scrollTrigger: { trigger: card, start: "top 90%" },
+      y: Math.sin(i) * 8,
+      repeat: -1,
+      yoyo: true,
+      duration: 3 + i * 0.3,
+      ease: "sine.inOut",
+    });
+  });
+}
+

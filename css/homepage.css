@@ -1,10 +1,13 @@
 /* ==========================================
-   Trusty Paws — Homepage Css
+   Trusty Paws — Homepage Stylesheet
+   Organized by: Global → Layout → Sections → Components → Responsive
    ========================================== */
 
-/* -------------------------
-   Section Divider
--------------------------- */
+
+/* =========================================================
+   1. GLOBAL STRUCTURE & ELEMENTS
+   ========================================================= */
+
 main > section::after {
   content: "";
   display: block;
@@ -13,9 +16,11 @@ main > section::after {
   margin-top: 6rem;
 }
 
-/* -------------------------
-   HERO SECTION
--------------------------- */
+
+/* =========================================================
+   2. HERO SECTION
+   ========================================================= */
+
 .hero {
   padding: 6rem 0 2rem;
 }
@@ -23,6 +28,17 @@ main > section::after {
 .hero-inner {
   display: grid;
   gap: 1rem;
+}
+
+/* Hero copy block (glass background) */
+.hero-copy {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
 }
 
 .hero-copy h1 {
@@ -45,9 +61,55 @@ main > section::after {
   box-shadow: var(--shadow);
 }
 
-/* -------------------------
-   SERVICES SECTION
--------------------------- */
+
+/* =========================================================
+   3. INFO CARD WRAPPER (main homepage container)
+   ========================================================= */
+
+.info-card {
+  background: 
+    linear-gradient(var(--accent), rgba(162, 117, 82, 0.85)),
+    url("../images/background.png") center/cover no-repeat;
+  background-blend-mode: multiply;
+  background-attachment: fixed;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: var(--max-width);
+  border: 1px solid #e5e5e5;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  color: var(--text);
+}
+
+.info-card:hover {
+  box-shadow: 0 12px 30px rgba(76, 175, 80, 0.25);
+}
+
+.info-card:hover > * {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+.info-card section {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 1rem;
+}
+
+.info-card section:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+
+/* =========================================================
+   4. SERVICES SECTION
+   ========================================================= */
+
 .services {
   padding: 1.25rem 0;
 }
@@ -114,9 +176,11 @@ main > section::after {
   object-fit: contain;
 }
 
-/* -------------------------
-   HOW IT WORKS SECTION
--------------------------- */
+
+/* =========================================================
+   5. HOW IT WORKS SECTION
+   ========================================================= */
+
 .how-works {
   padding: 1.25rem 0;
   text-align: center;
@@ -161,73 +225,78 @@ main > section::after {
   border-radius: 10px;
 }
 
-/* -------------------------
-   COVERAGE MAP
--------------------------- */
+
+/* =========================================================
+   6. COVERAGE MAP SECTION
+   ========================================================= */
+
 .coverage-map {
-  padding: 2rem 0;
+  padding: 3rem 1rem;
   background: #f9f9f9;
   text-align: center;
 }
 
 .coverage-map h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.coverage-form {
-  margin-bottom: 1rem;
-  display: inline-block;
+.map-container {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-light, 0 4px 16px rgba(0,0,0,0.08));
 }
 
-.coverage-form label {
-  display: none;
+.map-container img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.input-group {
+.coverage-info {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.coverage-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 0.75rem 1.5rem;
 }
 
-.input-group input {
-  padding: 0.6rem 0.8rem;
-  border: 1.5px solid #ccc;
-  border-radius: 8px 0 0 8px;
-  outline: none;
-  font-size: 1rem;
-}
-
-.input-group button {
-  padding: 0.6rem 1rem;
-  background: var(--brand-green);
-  border: none;
+.coverage-list li {
+  background: var(--brand-green, #6fcf97);
   color: #fff;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: background 0.25s ease;
-}
-
-.input-group button:hover {
-  background: var(--brand-blue);
-}
-
-.map-placeholder {
-  background: linear-gradient(135deg, #d9e8ff, #b0cffa);
-  border-radius: var(--radius);
-  padding: 3rem 0;
-  color: #fff;
-  box-shadow: var(--shadow);
-}
-
-.map-placeholder p {
-  margin: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   font-weight: 600;
 }
 
-/* -------------------------
-   REVIEWS SECTION
--------------------------- */
+.outside-note {
+  margin-top: 1rem;
+  color: #555;
+}
+
+.outside-note a {
+  color: var(--brand-blue, #2f80ed);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.outside-note a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   7. REVIEWS SECTION
+   ========================================================= */
+
 .reviews {
   padding: 1.25rem 0;
 }
@@ -258,31 +327,69 @@ main > section::after {
 }
 
 .carousel-btn {
-  background: transparent;
+  background: var(--brand-green);
   border: 1px solid rgba(0, 0, 0, 0.06);
   padding: 0.4rem 0.6rem;
   border-radius: 8px;
   cursor: pointer;
 }
 
-/* -------------------------
-   PET FACTS SECTION
--------------------------- */
+
+/* =========================================================
+   8. PET FACTS & VET TIPS
+   ========================================================= */
+
 .pet-facts {
   padding: 1.25rem 0;
+}
+
+.fact-card {
+  background: #f9f9f9;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.fact-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--brand-blue);
 }
 
 .pet-fact-text {
   font-weight: 600;
   margin: 0.5rem 0 1rem;
+  transition: opacity 0.3s ease;
 }
 
-/* -------------------------
-   FAQ + CONTACT SECTION
--------------------------- */
+/* Vet Tips (Instagram Embed) */
+#vet-tips {
+  text-align: left;
+}
+
+.insta-embed {
+  margin-bottom: 1rem;
+}
+
+.insta-embed iframe {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   9. FAQ + CONTACT SECTION
+   ========================================================= */
+
 .faq-contact {
   padding: 2rem 0;
-  background: #fff;
 }
 
 .faq-contact-inner {
@@ -340,7 +447,7 @@ main > section::after {
   line-height: 1.4;
 }
 
-/* Contact form */
+/* Contact Form */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -378,7 +485,7 @@ main > section::after {
   background: var(--accent);
 }
 
-/* Contact icons row */
+/* Contact Icons */
 .contact-icons {
   display: flex;
   justify-content: center;
@@ -386,8 +493,34 @@ main > section::after {
   font-size: 0.95rem;
   color: var(--muted);
   padding-top: 1rem;
-  border-top: 1px solid #eee;
   margin-top: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-icons div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-icons div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.contact-icons img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
 }
 
 .contact-icons a {
@@ -403,67 +536,10 @@ main > section::after {
 }
 
 
-.contact-icons div {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
+/* =========================================================
+   10. RESPONSIVE LAYOUTS
+   ========================================================= */
 
-.contact-icons img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  vertical-align: middle;
-}
-
-/* -------------------------
-   INFO CARD WRAPPER
--------------------------- */
-.info-card {
-  background: 
-    linear-gradient(var(--accent), rgba(162, 117, 82, 0.85)), /* overlay tint */
-    url("../images/background.png") center/cover no-repeat;
-    background-blend-mode: multiply; /* blends the color and image */
-    background-attachment: fixed;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: var(--max-width);
-    border: 1px solid #e5e5e5;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    color: var(--text);
-}
-
-
-.info-card:hover {
-  box-shadow: 0 12px 30px rgba(76, 175, 80, 0.25);
-}
-
-.info-card:hover > * {
-  transform: scale(1.02);
-  transition: transform 0.3s ease;
-}
-
-
-.info-card section {
-  margin-bottom: 3rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.6); /* soft overlay for readability */
-  border-radius: 1rem;
-}
-
-.info-card section:last-child {
-  margin-bottom: 0;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-
-/* -------------------------
-   RESPONSIVE LAYOUTS
--------------------------- */
 @media (min-width: 720px) {
   .hero-inner { grid-template-columns: 1fr 420px; align-items: center; }
   .hero-copy h1 { font-size: 2rem; }
@@ -485,21 +561,19 @@ main > section::after {
   .reviews-list li { min-width: 320px; }
 }
 
-/* ============================
-   CONTACT ICONS – MOBILE FIX
-   ============================ */
+/* Mobile fix for contact icons */
 @media (max-width: 720px) {
   .contact-icons {
-    flex-direction: column;        /* stack vertically */
-    align-items: flex-start;       /* left-align icons */
-    gap: 1rem;                     /* reasonable spacing */
-    padding: 1rem;                 /* breathing room */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
     text-align: left;
     justify-content: flex-start;
   }
 
   .contact-icons div {
-    width: 100%;                   /* prevent overflow */
+    width: 100%;
     justify-content: flex-start;
   }
 
@@ -507,47 +581,4 @@ main > section::after {
     width: 20px;
     height: 20px;
   }
-}
-
-
-.fact-card {
-  background: #f9f9f9;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.fact-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-.fact-card h3 {
-  margin-bottom: 0.5rem;
-  color: var(--brand-blue);
-}
-
-.pet-fact-text {
-  font-weight: 600;
-  margin: 0.5rem 0 1rem;
-  transition: opacity 0.3s ease;
-}
-
-/* -------------------------
-   Vet Tips (Instagram)
--------------------------- */
-#vet-tips {
-  text-align: left;
-}
-
-.insta-embed {
-  margin-bottom: 1rem;
-}
-
-.insta-embed iframe {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
 }

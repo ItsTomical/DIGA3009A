@@ -2,7 +2,7 @@
 // Booking Page Logic
 // -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Initialize EmailJS (use your public key)
+  // Initialize EmailJS
   emailjs.init("pDeF5q_6RjbGgwM8o");
 
   const steps = Array.from(document.querySelectorAll(".form-step"));
@@ -215,16 +215,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  // --- New Booking Button ---
-  const newBookingBtn = document.getElementById("newBookingBtn");
-  newBookingBtn.addEventListener("click", () => {
-    bookingForm.reset();
-    [careInfo, behaviour, dailyNotes, feeding, tasks].forEach(f => f.value = "");
-    if (petPhoto) petPhoto.value = "";
-    validateStep1();
-    bookingConfirmed.style.display = "none";
-    showStep(0);
-  });
+  // --- Back Home Button ---
+  const backHomeBtn = document.getElementById("backHomeBtn");
+  backHomeBtn.addEventListener("click", () => {
+  window.location.href = "index.html";
+});
+
+
 
   // --- Always-visible Pet Rows ---
   document.querySelectorAll(".pet-row").forEach(row => {
@@ -294,4 +291,91 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize
   validateStep1();
   showStep(0);
+
+
+
+  // -----------------------------
+// Dynamic Progress Bar Fill (GSAP Animated)
+// -----------------------------
+if (window.gsap) {
+  const progressFill = document.querySelector(".progress-fill");
+
+  // Helper to calculate progress based on field completion
+  function calculateProgress() {
+    let progress = 0;
+    const totalSteps = 6; // service, name, email, phone, date, pet count
+
+    // Service selected
+    const serviceSelected = document.querySelector('input[name="service"]:checked');
+    if (serviceSelected) progress++;
+
+    // Name filled
+    const nameVal = document.getElementById("name")?.value.trim();
+    if (nameVal?.length > 1) progress++;
+
+    // Email valid
+    const emailVal = document.getElementById("email")?.value.trim();
+    if (emailVal && emailVal.includes("@")) progress++;
+
+    // Phone valid
+    const phoneVal = document.getElementById("phone")?.value.trim();
+    if (phoneVal.length >= 7) progress++;
+
+    // Date selected
+    const dateVal = document.getElementById("date")?.value.trim();
+    if (dateVal.length > 0) progress++;
+
+    // At least one pet selected
+    let petCount = 0;
+    document.querySelectorAll(".pet-row .count").forEach((el) => {
+      petCount += parseInt(el.textContent) || 0;
+    });
+    if (petCount > 0) progress++;
+
+    // Calculate percentage
+    const percent = Math.round((progress / totalSteps) * 100);
+    animateProgress(percent);
+  }
+
+  // Smooth GSAP animation
+  let currentWidth = 0;
+  function animateProgress(targetPercent) {
+    gsap.to({ width: currentWidth }, {
+      width: targetPercent,
+      duration: 0.6,
+      ease: "power2.out",
+      onUpdate: function () {
+        const newWidth = this.targets()[0].width;
+        progressFill.style.width = `${newWidth}%`;
+        currentWidth = newWidth;
+      }
+    });
+  }
+
+  // Attach listeners to all relevant fields
+  const watchedSelectors = [
+    'input[name="service"]',
+    '#name',
+    '#email',
+    '#phone',
+    '#date',
+    '.circle-btn'
+  ];
+
+  watchedSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el) => {
+      const eventType = el.type === "radio" || el.classList.contains("circle-btn")
+        ? "click"
+        : "input";
+      el.addEventListener(eventType, calculateProgress);
+    });
+  });
+
+  // Run once on page load
+  calculateProgress();
+}
+
+
+
 });
+

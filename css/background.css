@@ -63,3 +63,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .sticker { animation: none !important; }
 }
+
+.motion-sticker {
+  z-index: -1;
+  opacity: 0.2;
+  user-select: none;
+  will-change: transform;
+}
