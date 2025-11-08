@@ -27,19 +27,21 @@ html, body { height: 100%; }
 
 body {
   margin: 0;
-  font-family: "Lora", serif;
+  font-family: "Lora", serif; /* Primary body font */
   color: var(--text);
   background: var(--bg);
   line-height: 1.4;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings */
-h1, h2, h3, h4 {
-  font-family: "Poppins", system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
-  margin: 0;
+/* Headings & UI elements (navbar, buttons, etc.) */
+h1, h2, h3, h4,
+.navbar, .primary-nav a, .btn, .brand, .cta-nav {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
 
 /* Layout container (critical for navbar width) */
 .container {

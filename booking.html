@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="base.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/booking.css" />
+    <link rel="stylesheet" href="css/background.css" />
 
     <!-- Flatpickr for date selection -->
     <link
@@ -30,15 +31,31 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+    <!-- GSAP (animations) -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/MotionPathPlugin.min.js"
+      defer
+    ></script>
+
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-    <!-- JS -->
-    <script src="javascript/navbar.js" defer></script>
-    <script src="javascript/booking.js" defer></script>
   </head>
 
   <body>
+    <!-- Floating stickers background -->
+    <div
+      class="background-stickers"
+      id="backgroundStickers"
+      aria-hidden="true"
+    ></div>
     <header class="site-header" role="banner">
       <div class="container header-inner">
         <a class="brand" href="index.html" aria-label="Trusty Paws homepage">
@@ -335,7 +352,21 @@
       </div>
     </footer>
 
+    <!-- JS -->
+    <script src="javascript/navbar.js" defer></script>
+    <script src="javascript/booking.js" defer></script>
     <script src="javascript/paw_trail.js"></script>
+    <script src="javascript/background.js" defer></script>
     <script src="javascript/contact_email.js" defer></script>
+
+    <!-- Hidden SVG path for motion stickers -->
+    <svg width="0" height="0" viewBox="0 0 100 100" style="position: absolute">
+      <path
+        id="floatPath"
+        d="M0,80 C30,20 70,20 100,80"
+        fill="none"
+        stroke="none"
+      />
+    </svg>
   </body>
 </html>

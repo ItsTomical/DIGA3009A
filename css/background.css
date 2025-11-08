@@ -1,13 +1,12 @@
+/* ==========================================
+   Trusty Paws — Background Stickers CSS
+   (Independent from layout and typography)
+   ========================================== */
+
+/* Sticker sizing variables */
 :root {
   --sticker-min: 56px;
   --sticker-max: 120px;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  overflow-x: hidden;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
 /* Floating Sticker Layer */
@@ -19,12 +18,14 @@ html, body {
   overflow: hidden;
 }
 
+/* Sticker base */
 .sticker {
   position: absolute;
   will-change: transform, opacity;
   opacity: 0.95;
 }
 
+/* Sticker image */
 .sticker img {
   display: block;
   width: 100%;
@@ -34,18 +35,40 @@ html, body {
   pointer-events: none;
 }
 
-/* Float animations */
+/* Motion-based floating stickers (animated via JS) */
+.motion-sticker {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ==========================================
+   Float Animations
+   ========================================== */
 @keyframes floatY {
-  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  50% { transform: translateY(-18px) rotate(6deg) scale(1.02); }
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) rotate(6deg) scale(1.02);
+  }
 }
 
 @keyframes floatYReverse {
-  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  50% { transform: translateY(18px) rotate(-6deg) scale(0.99); }
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(18px) rotate(-6deg) scale(0.99);
+  }
 }
 
-/* Responsive size tweaks */
+/* ==========================================
+   Responsive Sizes
+   ========================================== */
 @media (max-width: 768px) {
   :root {
     --sticker-min: 42px;
@@ -53,14 +76,11 @@ html, body {
   }
 }
 
-/* Disable animation for accessibility */
+/* ==========================================
+   Accessibility (reduce motion)
+   ========================================== */
 @media (prefers-reduced-motion: reduce) {
-  .sticker { animation: none !important; }
-}
-
-.motion-sticker {
-  z-index: -1;
-  opacity: 0.2;
-  user-select: none;
-  will-change: transform;
+  .sticker {
+    animation: none !important;
+  }
 }
